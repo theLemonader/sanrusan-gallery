@@ -103,13 +103,28 @@
     font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     font-weight: 400;
     font-size: clamp(0.85rem, 1.15vw, 1rem);
-    line-height: 1.65;
+    line-height: 1.7;
     letter-spacing: 0.02em;
-    max-width: 34rem;
+    max-width: 32rem;
     color: var(--ink-soft);
+    text-wrap: balance;
     opacity: 0;
     transform: translateY(8px);
     animation: rise 1.2s cubic-bezier(.2,.7,.2,1) 0.65s forwards;
+  }
+
+  .statement-coda {
+    margin-top: 1.4rem;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-weight: 400;
+    font-size: clamp(0.78rem, 1vw, 0.9rem);
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+    color: var(--ink);
+    opacity: 0;
+    transform: translateY(8px);
+    animation: rise 1.2s cubic-bezier(.2,.7,.2,1) 0.85s forwards;
   }
 
   .footer {
@@ -140,7 +155,8 @@
   /* Tablet */
   @media (max-width: 768px) {
     .frame { padding: 1.5rem 1.25rem; }
-    .statement { margin-top: 2rem; max-width: 28rem; }
+    .statement { margin-top: 2rem; max-width: 26rem; }
+    .statement-coda { margin-top: 1.1rem; }
   }
 
   /* Phone */
@@ -149,11 +165,16 @@
     .logo { letter-spacing: 0.015em; }
     .tagline { letter-spacing: 0.22em; font-size: 0.72rem; margin-top: 0.85rem; }
     .statement {
-      margin-top: 2rem;
+      margin-top: 1.75rem;
       font-size: 0.78rem;
       line-height: 1.7;
       letter-spacing: 0.015em;
       padding: 0 0.25rem;
+    }
+    .statement-coda {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
     }
     .footer {
       font-size: 0.55rem;
@@ -206,7 +227,10 @@
     <p class="tagline">Functional Art</p>
     <p class="statement">
       Objects that hold two truths at once: art on one side,
-      function on the other. A gallery for pieces that refuse to choose.
+      function on the other.
+    </p>
+    <p class="statement-coda">
+      A gallery for pieces that refuse to choose.
     </p>
   </main>
 
