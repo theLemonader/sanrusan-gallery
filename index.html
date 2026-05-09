@@ -168,9 +168,20 @@
 </style>
 </head>
 <body>
-  <video class="video-bg" autoplay muted loop playsinline preload="auto" poster="">
-    <source src="sanrusan.mp4" type="video/mp4" />
+  <video class="video-bg" autoplay muted loop playsinline preload="auto">
+    <source src="sanrusan.mp4?v=2" type="video/mp4" />
   </video>
+  <script>
+    // Force play in case browser blocks autoplay or loses focus mid-load
+    (() => {
+      const v = document.querySelector('video.video-bg');
+      const tryPlay = () => v.play().catch(() => {});
+      v.addEventListener('canplay', tryPlay);
+      v.addEventListener('loadeddata', tryPlay);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+      tryPlay();
+    })();
+  </script>
   <div class="scrim"></div>
   <div class="grain"></div>
 
