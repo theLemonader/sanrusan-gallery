@@ -10,42 +10,54 @@ export const config = {
   matcher: ['/artists', '/artists/:path*'],
 };
 
-export default function middleware(request) {
+async function sha256Hex(s) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+export default async function middleware(request) {
   const url = new URL(request.url);
   const password = (typeof process !== 'undefined' && process.env && process.env.OUTREACH_PASSWORD) || '';
 
-  // If no password is configured, fail open (development convenience)
   if (!password) return;
 
-  // Allow tile images through unauthenticated (they're public crops; the
-  // sensitive contact data is in the HTML, which IS protected).
+  // Tile images are not sensitive; let them through unauthenticated.
   if (url.pathname.startsWith('/artists/tiles/')) return;
 
-  // 1) Cookie check
+  const cookieValue = password; // cookie just needs to match the password
   const cookieHeader = request.headers.get('cookie') || '';
-  const match = cookieHeader.match(/(?:^|; )outreach_auth=([^;]+)/);
-  if (match && match[1] === password) return; // authenticated, pass through
+  const cookieMatch = cookieHeader.match(/(?:^|; )outreach_auth=([^;]+)/);
+  if (cookieMatch && cookieMatch[1] === cookieValue) return;
 
-  // 2) Query param check (?pwd=...)
-  const supplied = url.searchParams.get('pwd');
-  if (supplied && supplied === password) {
+  // Derived share token: 32-hex-char prefix of SHA-256(password).
+  // This way share links don't reveal the actual password.
+  const shareToken = (await sha256Hex(password)).slice(0, 32);
+
+  const suppliedPwd = url.searchParams.get('pwd');
+  const suppliedKey = url.searchParams.get('k');
+
+  // Accept either the plain password (typed via form) or the derived token (in share links)
+  const okPwd = suppliedPwd && suppliedPwd === password;
+  const okKey = suppliedKey && suppliedKey === shareToken;
+
+  if (okPwd || okKey) {
     url.searchParams.delete('pwd');
+    url.searchParams.delete('k');
     return new Response(null, {
       status: 302,
       headers: {
         Location: url.pathname + (url.search || ''),
-        'Set-Cookie': `outreach_auth=${password}; Path=/artists; Max-Age=2592000; HttpOnly; SameSite=Strict; Secure`,
+        'Set-Cookie': `outreach_auth=${cookieValue}; Path=/artists; Max-Age=2592000; HttpOnly; SameSite=Strict; Secure`,
       },
     });
   }
 
-  // 3) Show login page (error visible only if user supplied a wrong password)
-  const errorBlock = supplied
-    ? '<p class="error show">Incorrect password</p>'
-    : '';
+  // Login page (error if password was supplied incorrectly)
+  const wrong = suppliedPwd || suppliedKey;
+  const errorBlock = wrong ? '<p class="error show">Incorrect password</p>' : '';
   const html = LOGIN_HTML.replace('{{ERROR}}', errorBlock);
   return new Response(html, {
-    status: supplied ? 401 : 200,
+    status: wrong ? 401 : 200,
     headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' },
   });
 }
