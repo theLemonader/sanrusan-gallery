@@ -54,7 +54,7 @@ def insta_url(handle: str) -> str:
 
 
 def render_card(a):
-    tile = f"tiles/{a['img'].replace('.PNG', '.jpg')}"
+    tile = f"/artists/tiles/{a['img'].replace('.PNG', '.jpg')}"
     name = esc(a.get("name", ""))
     studio = esc(a.get("studio", ""))
     handle = a.get("handle", "")
