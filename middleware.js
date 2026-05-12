@@ -17,6 +17,10 @@ export default function middleware(request) {
   // If no password is configured, fail open (development convenience)
   if (!password) return;
 
+  // Allow tile images through unauthenticated (they're public crops; the
+  // sensitive contact data is in the HTML, which IS protected).
+  if (url.pathname.startsWith('/artists/tiles/')) return;
+
   // 1) Cookie check
   const cookieHeader = request.headers.get('cookie') || '';
   const match = cookieHeader.match(/(?:^|; )outreach_auth=([^;]+)/);
