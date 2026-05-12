@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex,nofollow">
+<title>SANRUSAN · Outreach</title>
+<meta name="description" content="SANRUSAN curated outreach list — functional art studios and makers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #ffffff;
+    --ink-soft: rgba(255,255,255,0.72);
+    --ink-faint: rgba(255,255,255,0.42);
+    --hair: rgba(255,255,255,0.12);
+    --bg: #0a0a0a;
+    --card: rgba(255,255,255,0.025);
+    --card-hover: rgba(255,255,255,0.05);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* Header */
+  .header {
+    padding: 4rem 2rem 2.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--hair);
+  }
+  .brand {
+    font-family: 'Avenir Next', 'Avenir', 'Jost', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 0.85rem;
+  }
+  .brand a:hover { opacity: 0.7; }
+  .subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .meta-strip {
+    margin-top: 1.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .meta-strip span { margin: 0 0.6rem; }
+
+  /* Search */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--hair);
+  }
+  .search-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .search {
+    flex: 1;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--hair);
+    color: var(--ink);
+    padding: 0.6rem 0;
+    font-family: inherit;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  .search:focus { border-color: var(--ink); }
+  .search::placeholder { color: var(--ink-faint); letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.72rem; }
+  .count {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  /* Grid */
+  .grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--hair);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    background: var(--card-hover);
+    border-color: rgba(255,255,255,0.22);
+    transform: translateY(-2px);
+  }
+  .card.hidden { display: none; }
+
+  .tile {
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    background-color: #181818;
+    border-bottom: 1px solid var(--hair);
+    filter: saturate(0.95);
+    transition: filter 0.3s ease;
+  }
+  .card:hover .tile { filter: saturate(1.1); }
+
+  .body {
+    padding: 1.25rem 1.25rem 1.4rem;
+  }
+
+  .studio {
+    font-family: 'Avenir Next', 'Avenir', 'Jost', system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+  }
+  .name-line {
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.9rem;
+    line-height: 1.4;
+  }
+  .tags {
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px dashed var(--hair);
+  }
+
+  .meta { margin-bottom: 0.9rem; }
+  .meta-row {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.68rem;
+    line-height: 1.45;
+    padding: 0.18rem 0;
+  }
+  .meta-key {
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    flex: 0 0 56px;
+    padding-top: 1px;
+  }
+  .meta-val {
+    color: var(--ink-soft);
+    word-break: break-word;
+    flex: 1;
+  }
+  .meta-val.link { color: var(--ink); border-bottom: 1px solid var(--hair); transition: border-color 0.15s; }
+  .meta-val.link:hover { border-color: var(--ink); }
+
+  .approach {
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    padding: 0.85rem 0.9rem;
+    background: rgba(255,255,255,0.025);
+    border-left: 2px solid rgba(255,255,255,0.25);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .pills {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .pill {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--hair);
+    color: var(--ink-soft);
+    transition: all 0.15s ease;
+  }
+  .pill:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .pill-strong {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .pill-strong:hover {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--hair);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .footer a { border-bottom: 1px solid var(--hair); }
+  .footer a:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* Empty state */
+  .empty {
+    display: none;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--ink-faint);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+  .empty.show { display: block; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .header { padding: 3rem 1.5rem 2rem; }
+    .controls { padding: 0.85rem 1.25rem; }
+    .search-wrap { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+    .grid { padding: 1.5rem 1.25rem 3rem; gap: 1rem; grid-template-columns: 1fr; }
+    .meta-strip span { margin: 0 0.3rem; display: inline-block; }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <h1 class="brand"><a href="/">SANRUSAN</a></h1>
+    <p class="subtitle">Outreach · Functional Art</p>
+    <p class="meta-strip">
+      <span>38 studios</span>·<span>curated 2026</span>·<span>private working list</span>
+    </p>
+  </header>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <input id="search" class="search" type="search" placeholder="Search artist · studio · location · tag" autocomplete="off">
+      <span class="count" id="count">38 of 38</span>
+    </div>
+  </div>
+
+  <main class="grid" id="grid">
+      <article class="card" data-search="meike &amp;amp; johannes budde budde @johannesbudde cologne, germany (also milan) furniture, lighting, interior objects; collectible + commercial email meike (business lead). also met by martamarghidanu, bogdantutuneanu (mutual followers).">
+        <div class="tile" style="background-image:url('tiles/IMG_9633.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">BUDDE</h2>
+          <p class="name-line">Meike &amp; Johannes Budde · Cologne, Germany (also Milan)</p>
+          <p class="tags">Furniture, lighting, interior objects; collectible + commercial</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/johannesbudde" target="_blank" rel="noopener">@johannesbudde</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://budde.co" target="_blank" rel="noopener">budde.co</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:meike@budde.co">meike@budde.co</a></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+49 176 41326982</span></div>
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">Bachemer Straße 121, 50931 Köln</span></div>
+          </div>
+          <p class="approach">Email Meike (business lead). Also met by martamarghidanu, bogdantutuneanu (mutual followers).</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/johannesbudde" target="_blank" rel="noopener">IG</a><a class="pill" href="https://budde.co" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:meike@budde.co">Email</a><a class="pill" href="tel:+4917641326982">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="dive design dive @divedesignco boonton, nj, usa additive manufacturing / 3d printing; sustainable furniture; decibel editions; 3d pets pitch via additive.divedesignco.com — alex (ceo) &amp;amp; adam hecht (director am). mention decibel editions / collectible angle.">
+        <div class="tile" style="background-image:url('tiles/IMG_9634.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">DIVE</h2>
+          <p class="name-line">DIVE Design · Boonton, NJ, USA</p>
+          <p class="tags">Additive manufacturing / 3D printing; sustainable furniture; DECIBEL editions; 3D Pets</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/divedesignco" target="_blank" rel="noopener">@divedesignco</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://divedesignco.com" target="_blank" rel="noopener">divedesignco.com / additive.divedesignco.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via website</span></div>
+            
+            
+          </div>
+          <p class="approach">Pitch via additive.divedesignco.com — Alex (CEO) &amp; Adam Hecht (Director AM). Mention DECIBEL editions / collectible angle.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/divedesignco" target="_blank" rel="noopener">IG</a><a class="pill" href="https://divedesignco.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="giulio camposano giulio pottery studio @giuliopotterystudio verbania, italy brutalist ceramics; japanese minimalism; pottery wheel, stoneware dm via instagram (most active). mutual: the_1of1_. mention sanrusan gallery curation.">
+        <div class="tile" style="background-image:url('tiles/IMG_9635.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Giulio Pottery Studio</h2>
+          <p class="name-line">Giulio Camposano · Verbania, Italy</p>
+          <p class="tags">Brutalist ceramics; Japanese minimalism; pottery wheel, stoneware</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/giuliopotterystudio" target="_blank" rel="noopener">@giuliopotterystudio</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://giuliopotterystudio.art" target="_blank" rel="noopener">giuliopotterystudio.art</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">Instagram DM</span></div>
+            
+            
+          </div>
+          <p class="approach">DM via Instagram (most active). Mutual: the_1of1_. Mention SANRUSAN gallery curation.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/giuliopotterystudio" target="_blank" rel="noopener">IG</a><a class="pill" href="https://giuliopotterystudio.art" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="form &amp;amp; eisen form &amp;amp; eisen @form.eisen salzburg, austria collectible steel furniture; sideboards, shelves, stools, planters; industrial elegance email office@. mutual: biju.gallery. worldwide delivery already; should be receptive.">
+        <div class="tile" style="background-image:url('tiles/IMG_9636.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">form &amp; eisen</h2>
+          <p class="name-line">form &amp; eisen · Salzburg, Austria</p>
+          <p class="tags">Collectible steel furniture; sideboards, shelves, stools, planters; industrial elegance</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/form.eisen" target="_blank" rel="noopener">@form.eisen</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://form-eisen.at" target="_blank" rel="noopener">form-eisen.at</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:office@form-eisen.at">office@form-eisen.at</a></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+43 664 2387708</span></div>
+            
+          </div>
+          <p class="approach">Email office@. Mutual: biju.gallery. Worldwide delivery already; should be receptive.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/form.eisen" target="_blank" rel="noopener">IG</a><a class="pill" href="https://form-eisen.at" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:office@form-eisen.at">Email</a><a class="pill" href="tel:+436642387708">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="balboa design balboa design @balboa.design france design studio - furniture &amp;amp; objects, made in-house; psilo / bespoke / workshop / events contact via balboadesign.fr. strong sculptural furniture in metal — fits sanrusan aesthetic.">
+        <div class="tile" style="background-image:url('tiles/IMG_9637.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Balboa Design</h2>
+          <p class="name-line">Balboa Design · France</p>
+          <p class="tags">Design studio - furniture &amp; objects, made in-house; PSILO / BESPOKE / WORKSHOP / EVENTS</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/balboa.design" target="_blank" rel="noopener">@balboa.design</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://balboadesign.fr" target="_blank" rel="noopener">balboadesign.fr</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via website contact form</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via balboadesign.fr. Strong sculptural furniture in metal — fits SANRUSAN aesthetic.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/balboa.design" target="_blank" rel="noopener">IG</a><a class="pill" href="https://balboadesign.fr" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="casa simples diy casa simples @casasimplesdiy brazil (campinas / são paulo area implied) diy, decor inspiration, achadinhos (small finds), functional decor whatsapp link in bio + ig dm. more of a creator/influencer than studio — could be partnership for visibility.">
+        <div class="tile" style="background-image:url('tiles/IMG_9638.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Casa Simples</h2>
+          <p class="name-line">Casa Simples DIY · Brazil (Campinas / São Paulo area implied)</p>
+          <p class="tags">DIY, decor inspiration, achadinhos (small finds), functional decor</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/casasimplesdiy" target="_blank" rel="noopener">@casasimplesdiy</a></div>
+            
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">WhatsApp + IG DM</span></div>
+            
+            
+          </div>
+          <p class="approach">WhatsApp link in bio + IG DM. More of a creator/influencer than studio — could be partnership for visibility.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/casasimplesdiy" target="_blank" rel="noopener">IG</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="luca ricci luca ricci @lucaa.ricci milan, italy art director / graphic designer; experimental objects; collectible art-objects dm instagram; portfolio on behance. mutual: marcosimonetti____.">
+        <div class="tile" style="background-image:url('tiles/IMG_9639.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Luca Ricci</h2>
+          <p class="name-line">Luca Ricci · Milan, Italy</p>
+          <p class="tags">Art Director / Graphic Designer; experimental objects; collectible art-objects</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/lucaa.ricci" target="_blank" rel="noopener">@lucaa.ricci</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://behance.net" target="_blank" rel="noopener">behance.net/lucaaricci</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">IG DM / via Behance</span></div>
+            
+            
+          </div>
+          <p class="approach">DM Instagram; portfolio on Behance. Mutual: marcosimonetti____.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/lucaa.ricci" target="_blank" rel="noopener">IG</a><a class="pill" href="https://behance.net" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="benjamin bacon (白培耕) soundspade / dogma lab @soundspade shanghai, china artist / associate professor media &amp;amp; arts @ duke kunshan; sound, kinetic, experimental contact via benjaminbacon.studio. pitch as functional art / sound objects intersection.">
+        <div class="tile" style="background-image:url('tiles/IMG_9640.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">SoundSpade / Dogma Lab</h2>
+          <p class="name-line">Benjamin Bacon (白培耕) · Shanghai, China</p>
+          <p class="tags">Artist / Associate Professor Media &amp; Arts @ Duke Kunshan; sound, kinetic, experimental</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/soundspade" target="_blank" rel="noopener">@soundspade</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://benjaminbacon.studio" target="_blank" rel="noopener">benjaminbacon.studio</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via website contact</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via benjaminbacon.studio. Pitch as functional art / sound objects intersection.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/soundspade" target="_blank" rel="noopener">IG</a><a class="pill" href="https://benjaminbacon.studio" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="felipe pantone felipe pantone studio (fpstudio) @felipepantone valencia, spain kinetic / chromatic / configurable art; collectibles via @configurableart, @casaaxis huge artist (771k). better path: via @configurableart shop or dm @casaaxis (his gallery brand). 771k following — long shot but viral fit.">
+        <div class="tile" style="background-image:url('tiles/IMG_9641.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Felipe Pantone Studio (FPSTUDIO)</h2>
+          <p class="name-line">Felipe Pantone · Valencia, Spain</p>
+          <p class="tags">Kinetic / chromatic / configurable art; collectibles via @configurableart, @casaaxis</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/felipepantone" target="_blank" rel="noopener">@felipepantone</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://felipepantone.com" target="_blank" rel="noopener">felipepantone.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via felipepantone.com/contact</span></div>
+            
+            
+          </div>
+          <p class="approach">Huge artist (771K). Better path: via @configurableart shop or DM @casaaxis (his gallery brand). 771K following — long shot but viral fit.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/felipepantone" target="_blank" rel="noopener">IG</a><a class="pill" href="https://felipepantone.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="laurids gallée studio laurids gallée @laurids.gallee rotterdam, nl (viennese) resin furniture, unique pieces or small series; rep'd by objects with narratives, the future perfect email via lauridsgallee.com. mutual followers: martamarghidanu, ozymandias.inc. strong sanrusan fit.">
+        <div class="tile" style="background-image:url('tiles/IMG_9642.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Studio Laurids Gallée</h2>
+          <p class="name-line">Laurids Gallée · Rotterdam, NL (Viennese)</p>
+          <p class="tags">Resin furniture, unique pieces or small series; rep'd by Objects With Narratives, The Future Perfect</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/laurids.gallee" target="_blank" rel="noopener">@laurids.gallee</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://lauridsgallee.com" target="_blank" rel="noopener">lauridsgallee.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via website (unique pieces inquiries)</span></div>
+            
+            
+          </div>
+          <p class="approach">Email via lauridsgallee.com. Mutual followers: martamarghidanu, ozymandias.inc. Strong SANRUSAN fit.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/laurids.gallee" target="_blank" rel="noopener">IG</a><a class="pill" href="https://lauridsgallee.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="daniel de bruin daniel de bruin @daniel_de_bruin utrecht / soesterberg, nl creative engineer; prototypical machines, devices, kinetic objects contact via danieldebruin.com. followed by felipepantone, fabianoefner. beloved of design press.">
+        <div class="tile" style="background-image:url('tiles/IMG_9643.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Daniel de Bruin</h2>
+          <p class="name-line">Daniel de Bruin · Utrecht / Soesterberg, NL</p>
+          <p class="tags">Creative engineer; prototypical machines, devices, kinetic objects</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/daniel_de_bruin" target="_blank" rel="noopener">@daniel_de_bruin</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://danieldebruin.com" target="_blank" rel="noopener">danieldebruin.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via website</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via danieldebruin.com. Followed by felipepantone, fabianoefner. Beloved of design press.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/daniel_de_bruin" target="_blank" rel="noopener">IG</a><a class="pill" href="https://danieldebruin.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="onibi onibi @oni.bi brooklyn, ny, usa kinetic instruments for illumination; ramulus floor lamp; collectible lighting email through onibi.us product/contact page. mutual: demauricio_. perfect functional-art fit.">
+        <div class="tile" style="background-image:url('tiles/IMG_9644.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Onibi</h2>
+          <p class="name-line">Onibi · Brooklyn, NY, USA</p>
+          <p class="tags">Kinetic instruments for illumination; Ramulus floor lamp; collectible lighting</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/oni.bi" target="_blank" rel="noopener">@oni.bi</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://onibi.us" target="_blank" rel="noopener">onibi.us</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via website / IG DM</span></div>
+            
+            
+          </div>
+          <p class="approach">Email through onibi.us product/contact page. Mutual: demauricio_. Perfect functional-art fit.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/oni.bi" target="_blank" rel="noopener">IG</a><a class="pill" href="https://onibi.us" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="kala arts + objects kala @kala_artobjects india room accents, soft furnishings, wall art, rugs, lighting; ships worldwide email support@. possibly e-commerce reseller more than original artist — useful for stock/dropship discussions.">
+        <div class="tile" style="background-image:url('tiles/IMG_9645.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">KALA</h2>
+          <p class="name-line">KALA arts + objects · India</p>
+          <p class="tags">Room accents, soft furnishings, wall art, rugs, lighting; ships worldwide</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/kala_artobjects" target="_blank" rel="noopener">@kala_artobjects</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://kalaartobjects.com" target="_blank" rel="noopener">kalaartobjects.com</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:support@kalaartobjects.com">support@kalaartobjects.com</a></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+91 9946634891</span></div>
+            
+          </div>
+          <p class="approach">Email support@. Possibly e-commerce reseller more than original artist — useful for stock/dropship discussions.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/kala_artobjects" target="_blank" rel="noopener">IG</a><a class="pill" href="https://kalaartobjects.com" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:support@kalaartobjects.com">Email</a><a class="pill" href="tel:+919946634891">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="dakd jung burnslap @dakd_jung seoul, south korea tech-based installation art; collectible electronics / fav-eq; release-by-application drops subscribe on burnslap.me to receive release news; dm @dakd_jung. mutual: ozymandias.inc, iamrurd.">
+        <div class="tile" style="background-image:url('tiles/IMG_9646.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">BurnSlap</h2>
+          <p class="name-line">DAKD Jung · Seoul, South Korea</p>
+          <p class="tags">Tech-based installation art; collectible electronics / FAV-EQ; release-by-application drops</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/dakd_jung" target="_blank" rel="noopener">@dakd_jung</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://burnslap.me" target="_blank" rel="noopener">burnslap.me</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via burnslap.me subscription / IG DM</span></div>
+            
+            
+          </div>
+          <p class="approach">Subscribe on burnslap.me to receive release news; DM @dakd_jung. Mutual: ozymandias.inc, iamrurd.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/dakd_jung" target="_blank" rel="noopener">IG</a><a class="pill" href="https://burnslap.me" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="andrea mancuso studio andrea mancuso @andreamancuso_studio milan, italy research-based; narrative-driven objects, furniture, installations; ad100; elle deco winner 2025 email studio@. mutual: valentinrusan, objectswithnarratives. top-tier — pitch as exclusive eastern european debut.">
+        <div class="tile" style="background-image:url('tiles/IMG_9647.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Studio Andrea Mancuso</h2>
+          <p class="name-line">Andrea Mancuso · Milan, Italy</p>
+          <p class="tags">Research-based; narrative-driven objects, furniture, installations; AD100; Elle Deco winner 2025</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/andreamancuso_studio" target="_blank" rel="noopener">@andreamancuso_studio</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://andreamancuso.com" target="_blank" rel="noopener">andreamancuso.com</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:studio@andreamancuso.com">studio@andreamancuso.com</a></div>
+            
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">Via Marco Aurelio 21, 20127 Milano</span></div>
+          </div>
+          <p class="approach">Email studio@. Mutual: valentinrusan, objectswithnarratives. Top-tier — pitch as exclusive Eastern European debut.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/andreamancuso_studio" target="_blank" rel="noopener">IG</a><a class="pill" href="https://andreamancuso.com" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:studio@andreamancuso.com">Email</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="draga obradovic &amp;amp; aurel k. basedow draga &amp;amp; aurel @dragaandaurel como, italy art &amp;amp; design atelier; resin, mixed media; #dragaandaurel #transparencymatters call or email. mutual: martamarghidanu, valentinrusan. established (45k followers).">
+        <div class="tile" style="background-image:url('tiles/IMG_9648.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Draga &amp; Aurel</h2>
+          <p class="name-line">Draga Obradovic &amp; Aurel K. Basedow · Como, Italy</p>
+          <p class="tags">Art &amp; design atelier; resin, mixed media; #dragaandaurel #transparencymatters</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/dragaandaurel" target="_blank" rel="noopener">@dragaandaurel</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://draga-aurel.com" target="_blank" rel="noopener">draga-aurel.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via website contact form</span></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+39 031 3370189 (gallery) / +39 031 522817 (studio)</span></div>
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">Atelier: Via G. Ferrari 7, 22100 Como; Studio: Via A. Lenticchia 15, 22100 Como</span></div>
+          </div>
+          <p class="approach">Call or email. Mutual: martamarghidanu, valentinrusan. Established (45K followers).</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/dragaandaurel" target="_blank" rel="noopener">IG</a><a class="pill" href="https://draga-aurel.com" target="_blank" rel="noopener">Web</a><a class="pill" href="tel:+390313370189gallery/+39031522817studio">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="moritz waldemeyer studio waldemeyer @studio.waldemeyer london, uk art engineering &amp;amp; light design; clients: philip treacy, bentley, jamiroquai email studio@. mutual: valentinrusan. celebrity-tier creative engineer.">
+        <div class="tile" style="background-image:url('tiles/IMG_9649.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Studio Waldemeyer</h2>
+          <p class="name-line">Moritz Waldemeyer · London, UK</p>
+          <p class="tags">Art Engineering &amp; Light Design; clients: Philip Treacy, Bentley, Jamiroquai</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/studio.waldemeyer" target="_blank" rel="noopener">@studio.waldemeyer</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://studio.waldemeyer.com" target="_blank" rel="noopener">studio.waldemeyer.com</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:studio@waldemeyer.com">studio@waldemeyer.com</a></div>
+            
+            
+          </div>
+          <p class="approach">Email studio@. Mutual: valentinrusan. Celebrity-tier creative engineer.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/studio.waldemeyer" target="_blank" rel="noopener">IG</a><a class="pill" href="https://studio.waldemeyer.com" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:studio@waldemeyer.com">Email</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="deniz aktay dezin objects @dezinobjects stuttgart, germany furniture &amp;amp; object design; press &amp;amp; awards listed; functionalist sculptural pieces email info@. mutual: buzzyalex, andrada.borda. active commercial — likely open to gallery placement.">
+        <div class="tile" style="background-image:url('tiles/IMG_9650.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Dezin Objects</h2>
+          <p class="name-line">Deniz Aktay · Stuttgart, Germany</p>
+          <p class="tags">Furniture &amp; object design; press &amp; awards listed; functionalist sculptural pieces</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/dezinobjects" target="_blank" rel="noopener">@dezinobjects</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://dezinobjects.com" target="_blank" rel="noopener">dezinobjects.com</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:info@dezinobjects.com">info@dezinobjects.com</a></div>
+            
+            
+          </div>
+          <p class="approach">Email info@. Mutual: buzzyalex, andrada.borda. Active commercial — likely open to gallery placement.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/dezinobjects" target="_blank" rel="noopener">IG</a><a class="pill" href="https://dezinobjects.com" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:info@dezinobjects.com">Email</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="vincenzo de cotiis vincenzo de cotiis architects &amp;amp; gallery @vdecotiis milan, italy art / architecture / interior design; art basel, venice; ultra high-end collectible email gallery@. mutual: teodoraburz, martamarghidanu. top-tier — long shot but worth a curated outreach.">
+        <div class="tile" style="background-image:url('tiles/IMG_9651.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Vincenzo De Cotiis Architects &amp; Gallery</h2>
+          <p class="name-line">Vincenzo De Cotiis · Milan, Italy</p>
+          <p class="tags">Art / Architecture / Interior Design; ART BASEL, Venice; ultra high-end collectible</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/vdecotiis" target="_blank" rel="noopener">@vdecotiis</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://decotiis.it" target="_blank" rel="noopener">decotiis.it</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:gallery@decotiis.it">gallery@decotiis.it</a></div>
+            
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">Via San Giovanni sul muro 18, 20121 Milano</span></div>
+          </div>
+          <p class="approach">Email gallery@. Mutual: teodoraburz, martamarghidanu. Top-tier — long shot but worth a curated outreach.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/vdecotiis" target="_blank" rel="noopener">IG</a><a class="pill" href="https://decotiis.it" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:gallery@decotiis.it">Email</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="arielle assouline-lichten slash objects @slashobjects new york + paris furniture, surfaces, rubber/cork experimentation; milan 2026; x series fill typeform from her bio; mutual: ozymandias.inc, valentinrusan. material-first practice — strong sanrusan match.">
+        <div class="tile" style="background-image:url('tiles/IMG_9652.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Slash Objects</h2>
+          <p class="name-line">Arielle Assouline-Lichten · New York + Paris</p>
+          <p class="tags">Furniture, surfaces, rubber/cork experimentation; Milan 2026; X Series</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/slashobjects" target="_blank" rel="noopener">@slashobjects</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://slashobjects.com" target="_blank" rel="noopener">slashobjects.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via slashobjects.com / typeform link in bio</span></div>
+            
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">224 Centre Street, 4th Floor, New York 10013</span></div>
+          </div>
+          <p class="approach">Fill typeform from her bio; mutual: ozymandias.inc, valentinrusan. Material-first practice — strong SANRUSAN match.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/slashobjects" target="_blank" rel="noopener">IG</a><a class="pill" href="https://slashobjects.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="tarz tarz hi-fi systems @tarzhifi brazil (likely) high-fidelity sound systems, custom-built, design-driven; bolt b6 / bolt series only ig (88 followers — very new). dm directly. could be founding partnership opportunity.">
+        <div class="tile" style="background-image:url('tiles/IMG_9653.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">TARZ Hi-Fi Systems</h2>
+          <p class="name-line">TARZ · Brazil (likely)</p>
+          <p class="tags">High-fidelity sound systems, custom-built, design-driven; BOLT B6 / BOLT Series</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/tarzhifi" target="_blank" rel="noopener">@tarzhifi</a></div>
+            
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">Instagram DM (no website found)</span></div>
+            
+            
+          </div>
+          <p class="approach">Only IG (88 followers — very new). DM directly. Could be founding partnership opportunity.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/tarzhifi" target="_blank" rel="noopener">IG</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="javier &amp;amp; anaïs unavela @unavela.store south of france everyday objects with unusual shapes; aluminium machined; aerospace-engineer founders contact via unavela.store. mutual: diamantby, ovidiubojor. recent yanko press — momentum.">
+        <div class="tile" style="background-image:url('tiles/IMG_9654.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">UNAVELA</h2>
+          <p class="name-line">Javier &amp; Anaïs · South of France</p>
+          <p class="tags">Everyday objects with unusual shapes; aluminium machined; aerospace-engineer founders</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/unavela.store" target="_blank" rel="noopener">@unavela.store</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://unavela.store" target="_blank" rel="noopener">unavela.store</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via unavela.store</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via unavela.store. Mutual: diamantby, ovidiubojor. Recent Yanko press — momentum.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/unavela.store" target="_blank" rel="noopener">IG</a><a class="pill" href="https://unavela.store" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="aot studio aot @a.o.t.studio copenhagen, denmark family-led danish design; one-off pieces + collections; 3daysofdesign exhibitor contact via aotstudio.com. mutual: laurids.gallee, anneivan. established danish — quality fit.">
+        <div class="tile" style="background-image:url('tiles/IMG_9655.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">AOT</h2>
+          <p class="name-line">AOT studio · Copenhagen, Denmark</p>
+          <p class="tags">Family-led Danish design; one-off pieces + collections; 3daysofdesign exhibitor</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/a.o.t.studio" target="_blank" rel="noopener">@a.o.t.studio</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://aotstudio.com" target="_blank" rel="noopener">aotstudio.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via aotstudio.com contact</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via aotstudio.com. Mutual: laurids.gallee, anneivan. Established Danish — quality fit.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/a.o.t.studio" target="_blank" rel="noopener">IG</a><a class="pill" href="https://aotstudio.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="nicholas baker nicholas baker studio @nickpbaker brooklyn, ny, usa furniture, lighting, everyday objects; the local project profile contact via baker.studio. mutual: raressmanolache, cozmajohn. subscribe to bakerstudio.substack.com for inroad.">
+        <div class="tile" style="background-image:url('tiles/IMG_9656.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Nicholas Baker Studio</h2>
+          <p class="name-line">Nicholas Baker · Brooklyn, NY, USA</p>
+          <p class="tags">Furniture, lighting, everyday objects; The Local Project profile</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/nickpbaker" target="_blank" rel="noopener">@nickpbaker</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://baker.studio" target="_blank" rel="noopener">baker.studio</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via baker.studio / Substack</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via baker.studio. Mutual: raressmanolache, cozmajohn. Subscribe to bakerstudio.substack.com for inroad.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/nickpbaker" target="_blank" rel="noopener">IG</a><a class="pill" href="https://baker.studio" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="alberto esses essesi design studio @albertoessesi los angeles, usa (mexican-born) industrial design; former tesla design studio lead; mexican craftsmanship + tech email hello@. mutual: andrada.borda, raressmanolache. 'sentience to matter' philosophy aligns with sanrusan.">
+        <div class="tile" style="background-image:url('tiles/IMG_9657.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Essesi Design Studio</h2>
+          <p class="name-line">Alberto Esses · Los Angeles, USA (Mexican-born)</p>
+          <p class="tags">Industrial design; former Tesla Design Studio lead; Mexican craftsmanship + tech</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/albertoessesi" target="_blank" rel="noopener">@albertoessesi</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://essesi.com" target="_blank" rel="noopener">essesi.com / essesi.design</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:hello@essesi.com">hello@essesi.com</a></div>
+            
+            
+          </div>
+          <p class="approach">Email hello@. Mutual: andrada.borda, raressmanolache. 'Sentience to Matter' philosophy aligns with SANRUSAN.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/albertoessesi" target="_blank" rel="noopener">IG</a><a class="pill" href="https://essesi.com" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:hello@essesi.com">Email</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="paul cocksedge paul cocksedge studio @paulcocksedge london, uk major artist &amp;amp; designer; collaborations with dior; ships worldwide; pcs/news/drops email info@. mutual: martamarghidanu, bogzafmir. 613k followers — huge name but he sells limited drops.">
+        <div class="tile" style="background-image:url('tiles/IMG_9658.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Paul Cocksedge Studio</h2>
+          <p class="name-line">Paul Cocksedge · London, UK</p>
+          <p class="tags">Major artist &amp; designer; collaborations with Dior; ships worldwide; PCS/NEWS/DROPS</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/paulcocksedge" target="_blank" rel="noopener">@paulcocksedge</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://paulcocksedgestudio.com" target="_blank" rel="noopener">paulcocksedgestudio.com</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:info@paulcocksedgestudio.com">info@paulcocksedgestudio.com</a></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+44 20 8985 0907</span></div>
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">2A Brenthouse Road, Soloman's Yard, London E9 6QG</span></div>
+          </div>
+          <p class="approach">Email info@. Mutual: martamarghidanu, bogzafmir. 613K followers — huge name but he sells limited drops.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/paulcocksedge" target="_blank" rel="noopener">IG</a><a class="pill" href="https://paulcocksedgestudio.com" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:info@paulcocksedgestudio.com">Email</a><a class="pill" href="tel:+442089850907">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="giacomo ravagli giacomo ravagli @giacomo_ravagli pietrasanta, italy marble carver; high-end furniture, unique pieces, limited editions; carpenters workshop gallery email via website. mutual: valentinrusan, nilufargallery. gallery-represented — go via him directly first.">
+        <div class="tile" style="background-image:url('tiles/IMG_9659.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Giacomo Ravagli</h2>
+          <p class="name-line">Giacomo Ravagli · Pietrasanta, Italy</p>
+          <p class="tags">Marble carver; high-end furniture, unique pieces, limited editions; Carpenters Workshop Gallery</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/giacomo_ravagli" target="_blank" rel="noopener">@giacomo_ravagli</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://giacomoravagli.com" target="_blank" rel="noopener">giacomoravagli.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via giacomoravagli.com</span></div>
+            
+            
+          </div>
+          <p class="approach">Email via website. Mutual: valentinrusan, nilufargallery. Gallery-represented — go via him directly first.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/giacomo_ravagli" target="_blank" rel="noopener">IG</a><a class="pill" href="https://giacomoravagli.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="lukas cober studio lukas cober @studiolukascober maastricht, netherlands makers studio — shapes — unique pieces; sculptural resin/glass furniture contact via lukascober.com. mutual: laurids.gallee, diamantby. strong sanrusan fit — confirmed gallery contacts.">
+        <div class="tile" style="background-image:url('tiles/IMG_9660.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Studio Lukas Cober</h2>
+          <p class="name-line">Lukas Cober · Maastricht, Netherlands</p>
+          <p class="tags">Makers Studio — Shapes — Unique Pieces; sculptural resin/glass furniture</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/studiolukascober" target="_blank" rel="noopener">@studiolukascober</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://lukascober.com" target="_blank" rel="noopener">lukascober.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via lukascober.com</span></div>
+            
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">Sandersweg 33, 6219 NW Maastricht</span></div>
+          </div>
+          <p class="approach">Contact via lukascober.com. Mutual: laurids.gallee, diamantby. Strong SANRUSAN fit — confirmed gallery contacts.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/studiolukascober" target="_blank" rel="noopener">IG</a><a class="pill" href="https://lukascober.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="manu bañó (manuel) manu bañó @manuelbano valencia, spain / cdmx, mexico co-founder ewe studio; rep'd by @gallery_collectional, @licht_gallery, @masagaleria, @objectswithnarratives contact via manubano.com. mutual: martamarghidanu, laurids.gallee. heavy gallery rep — pitch quality of curation.">
+        <div class="tile" style="background-image:url('tiles/IMG_9661.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Manu Bañó</h2>
+          <p class="name-line">Manu Bañó (Manuel) · Valencia, Spain / CDMX, Mexico</p>
+          <p class="tags">Co-founder EWE Studio; rep'd by @gallery_collectional, @licht_gallery, @masagaleria, @objectswithnarratives</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/manuelbano" target="_blank" rel="noopener">@manuelbano</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://manubano.com" target="_blank" rel="noopener">manubano.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via manubano.com</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via manubano.com. Mutual: martamarghidanu, laurids.gallee. Heavy gallery rep — pitch quality of curation.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/manuelbano" target="_blank" rel="noopener">IG</a><a class="pill" href="https://manubano.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="héctor esrawe esrawe studio @hesrawe mexico city, mexico hfaia director; co-founder @ewestudio, @xinuperfumes, @masagaleria; large architecture+design practice email studio@ or medios@. mutual: fabianoefner, diamantby. major studio — likely via @masagaleria pipeline.">
+        <div class="tile" style="background-image:url('tiles/IMG_9662.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Esrawe Studio</h2>
+          <p class="name-line">Héctor Esrawe · Mexico City, Mexico</p>
+          <p class="tags">HFAIA Director; co-founder @ewestudio, @xinuperfumes, @masagaleria; large architecture+design practice</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/hesrawe" target="_blank" rel="noopener">@hesrawe</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://esrawe.com" target="_blank" rel="noopener">esrawe.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">studio@esrawe.com (press: medios@esrawe.com)</span></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+52 55 5553 9611</span></div>
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">Córdoba 206, Roma Norte, CDMX</span></div>
+          </div>
+          <p class="approach">Email studio@ or medios@. Mutual: fabianoefner, diamantby. Major studio — likely via @masagaleria pipeline.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/hesrawe" target="_blank" rel="noopener">IG</a><a class="pill" href="https://esrawe.com" target="_blank" rel="noopener">Web</a><a class="pill" href="tel:+525555539611">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="vladimir slavov dim atelier @dimatelier antwerp / zaventem, belgium custom lighting and objects; pad london, collectible fair, nuance email vladimir directly. mutual: laurids.gallee, diamantby. listed in 'objects with narratives'. hot fit.">
+        <div class="tile" style="background-image:url('tiles/IMG_9663.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">DIM atelier</h2>
+          <p class="name-line">Vladimir Slavov · Antwerp / Zaventem, Belgium</p>
+          <p class="tags">Custom lighting and objects; PAD London, Collectible Fair, Nuance</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/dimatelier" target="_blank" rel="noopener">@dimatelier</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://dimatelier.com" target="_blank" rel="noopener">dimatelier.com</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:vladimir.slavov@dimatelier.com">vladimir.slavov@dimatelier.com</a></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+32 484 327 077</span></div>
+            
+          </div>
+          <p class="approach">Email Vladimir directly. Mutual: laurids.gallee, diamantby. Listed in 'Objects With Narratives'. Hot fit.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/dimatelier" target="_blank" rel="noopener">IG</a><a class="pill" href="https://dimatelier.com" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:vladimir.slavov@dimatelier.com">Email</a><a class="pill" href="tel:+32484327077">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="hasik design studio hasik design studio @hasik_design poland unique, handcrafted objects + authentic interior design; comure series email contact@. polish — geographic proximity to romania useful for shipping/visits.">
+        <div class="tile" style="background-image:url('tiles/IMG_9664.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">hasik design studio</h2>
+          <p class="name-line">hasik design studio · Poland</p>
+          <p class="tags">Unique, handcrafted objects + authentic interior design; COMURE series</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/hasik_design" target="_blank" rel="noopener">@hasik_design</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://hasik.design" target="_blank" rel="noopener">hasik.design</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:contact@hasik.design">contact@hasik.design</a></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+48 881 321 311 / +48 514 833 987</span></div>
+            
+          </div>
+          <p class="approach">Email contact@. Polish — geographic proximity to Romania useful for shipping/visits.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/hasik_design" target="_blank" rel="noopener">IG</a><a class="pill" href="https://hasik.design" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:contact@hasik.design">Email</a><a class="pill" href="tel:+48881321311/+48514833987">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="arthur moulucou mlk furniture @mlkfurniture saint-ciers-sur-gironde, france functionalism + brutalism; low-tech, ready-to-assemble, modular; hex400 table email arthur directly. mutual: diamantby, super.sedia. strong philosophical alignment with sanrusan.">
+        <div class="tile" style="background-image:url('tiles/IMG_9665.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">MLK Furniture</h2>
+          <p class="name-line">Arthur Moulucou · Saint-Ciers-sur-Gironde, France</p>
+          <p class="tags">Functionalism + brutalism; low-tech, ready-to-assemble, modular; Hex400 table</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/mlkfurniture" target="_blank" rel="noopener">@mlkfurniture</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="" target="_blank" rel="noopener">MLK on 1stDibs, Etsy, APOC, Isola, basic.space</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:arthur.moulucou@mailfence.com">arthur.moulucou@mailfence.com</a></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+33 6 12 98 01 81</span></div>
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">114 Avenue de la République, 33820 Saint-Ciers-sur-Gironde</span></div>
+          </div>
+          <p class="approach">Email arthur directly. Mutual: diamantby, super.sedia. Strong philosophical alignment with SANRUSAN.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/mlkfurniture" target="_blank" rel="noopener">IG</a><a class="pill pill-strong" href="mailto:arthur.moulucou@mailfence.com">Email</a><a class="pill" href="tel:+33612980181">Tel</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="guillaume crédoz bits to atoms / post industrial crafts @ghouyoum m'kalles, beirut, lebanon architect &amp;amp; designer; bike trips, processes, sketches; architecture masterprize winner contact via bitstoatoms.xyz. lebanese architecture office — uncommon geography, distinctive output.">
+        <div class="tile" style="background-image:url('tiles/IMG_9666.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Bits to Atoms / Post Industrial Crafts</h2>
+          <p class="name-line">Guillaume Crédoz · M'kalles, Beirut, Lebanon</p>
+          <p class="tags">Architect &amp; designer; bike trips, processes, sketches; Architecture Masterprize winner</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/ghouyoum" target="_blank" rel="noopener">@ghouyoum</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://bitstoatoms.xyz" target="_blank" rel="noopener">bitstoatoms.xyz</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via bitstoatoms.xyz contact</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via bitstoatoms.xyz. Lebanese architecture office — uncommon geography, distinctive output.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/ghouyoum" target="_blank" rel="noopener">IG</a><a class="pill" href="https://bitstoatoms.xyz" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="shivas howard-brown friendly pressure @friendly.pressure london, uk bespoke loudspeaker systems; horn-inspired; stone island collab; fp-498, fp-y210 email via bio link. mutual: valentinrusan, anaraucea. crossover fashion/audio — high-design audience.">
+        <div class="tile" style="background-image:url('tiles/IMG_9667.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Friendly Pressure</h2>
+          <p class="name-line">Shivas Howard-Brown · London, UK</p>
+          <p class="tags">Bespoke loudspeaker systems; horn-inspired; Stone Island collab; FP-498, FP-Y210</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/friendly.pressure" target="_blank" rel="noopener">@friendly.pressure</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://friendlypressure.studio" target="_blank" rel="noopener">friendlypressure.studio</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">Email via Instagram bio (for all enquiries)</span></div>
+            
+            
+          </div>
+          <p class="approach">Email via bio link. Mutual: valentinrusan, anaraucea. Crossover fashion/audio — high-design audience.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/friendly.pressure" target="_blank" rel="noopener">IG</a><a class="pill" href="https://friendlypressure.studio" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="drew hart east 38th @east38th_ cincinnati, oh, usa furniture designer &amp;amp; maker; sculptural wood; ripple wall lamp contact via east38th.com. mutual: demauricio_. heavy maker presence (2m views on a reel) — bankable craft.">
+        <div class="tile" style="background-image:url('tiles/IMG_9668.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">East 38th</h2>
+          <p class="name-line">Drew Hart · Cincinnati, OH, USA</p>
+          <p class="tags">Furniture designer &amp; maker; sculptural wood; Ripple Wall lamp</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/east38th_" target="_blank" rel="noopener">@east38th_</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://east38th.com" target="_blank" rel="noopener">east38th.com</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">via east38th.com</span></div>
+            
+            
+          </div>
+          <p class="approach">Contact via east38th.com. Mutual: demauricio_. Heavy maker presence (2M views on a Reel) — bankable craft.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/east38th_" target="_blank" rel="noopener">IG</a><a class="pill" href="https://east38th.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="romanovna romanovna studio @romanovna.std middle east (per ad middle east feature) functional art pieces, limited works, sensory &amp;amp; contemporary; ai-driven; 'coming to life very soon' dm instagram. mutual: tudormonroe, avi_ciciream. pre-launch — perfect timing for sanrusan co-launch.">
+        <div class="tile" style="background-image:url('tiles/IMG_9669.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Romanovna Studio</h2>
+          <p class="name-line">Romanovna · Middle East (per AD Middle East feature)</p>
+          <p class="tags">Functional Art Pieces, Limited Works, Sensory &amp; Contemporary; AI-driven; 'coming to life very soon'</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/romanovna.std" target="_blank" rel="noopener">@romanovna.std</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://admiddleeast.com" target="_blank" rel="noopener">admiddleeast.com feature / IG bio</a></div>
+            <div class="meta-row"><span class="meta-key">contact</span><span class="meta-val">IG DM</span></div>
+            
+            
+          </div>
+          <p class="approach">DM Instagram. Mutual: tudormonroe, avi_ciciream. Pre-launch — perfect timing for SANRUSAN co-launch.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/romanovna.std" target="_blank" rel="noopener">IG</a><a class="pill" href="https://admiddleeast.com" target="_blank" rel="noopener">Web</a></div>
+        </div>
+      </article>
+
+      <article class="card" data-search="brodie neill brodie neill (made in ratio) @brodieneill london, uk collectable &amp;amp; limited-edition; material innovation, sculptural form; showing: opal at one leadenhall email info@. mutual: objectswithnarratives, demauricio_. established collectible — credibility booster for sanrusan.">
+        <div class="tile" style="background-image:url('tiles/IMG_9670.jpg')"></div>
+        <div class="body">
+          <h2 class="studio">Brodie Neill (Made in Ratio)</h2>
+          <p class="name-line">Brodie Neill · London, UK</p>
+          <p class="tags">Collectable &amp; limited-edition; material innovation, sculptural form; SHOWING: Opal at One Leadenhall</p>
+          <div class="meta">
+            <div class="meta-row"><span class="meta-key">ig</span><a class="meta-val link" href="https://instagram.com/brodieneill" target="_blank" rel="noopener">@brodieneill</a></div>
+            <div class="meta-row"><span class="meta-key">web</span><a class="meta-val link" href="https://brodieneill.com" target="_blank" rel="noopener">brodieneill.com</a></div>
+            <div class="meta-row"><span class="meta-key">email</span><a class="meta-val link" href="mailto:info@brodieneill.com">info@brodieneill.com</a></div>
+            <div class="meta-row"><span class="meta-key">phone</span><span class="meta-val">+44 20 7033 3434</span></div>
+            <div class="meta-row"><span class="meta-key">address</span><span class="meta-val">4B Orsman Road, Tuscany Wharf, London N1 5QJ</span></div>
+          </div>
+          <p class="approach">Email info@. Mutual: objectswithnarratives, demauricio_. Established collectible — credibility booster for SANRUSAN.</p>
+          <div class="pills"><a class="pill" href="https://instagram.com/brodieneill" target="_blank" rel="noopener">IG</a><a class="pill" href="https://brodieneill.com" target="_blank" rel="noopener">Web</a><a class="pill pill-strong" href="mailto:info@brodieneill.com">Email</a><a class="pill" href="tel:+442070333434">Tel</a></div>
+        </div>
+      </article>
+
+  </main>
+
+  <p id="empty" class="empty">No matches.</p>
+
+  <footer class="footer">
+    SANRUSAN · <a href="/">sanrusan.gallery</a>
+  </footer>
+
+<script>
+(() => {
+  const grid = document.getElementById('grid');
+  const cards = [...grid.querySelectorAll('.card')];
+  const search = document.getElementById('search');
+  const count = document.getElementById('count');
+  const empty = document.getElementById('empty');
+  const total = cards.length;
+
+  function update() {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    cards.forEach(c => {
+      const hay = c.dataset.search || '';
+      const ok = !q || hay.includes(q);
+      c.classList.toggle('hidden', !ok);
+      if (ok) shown++;
+    });
+    count.textContent = shown + ' of ' + total;
+    empty.classList.toggle('show', shown === 0);
+  }
+
+  search.addEventListener('input', update);
+})();
+</script>
+</body>
+</html>

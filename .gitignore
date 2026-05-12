@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# Large source materials (kept locally, not deployed)
+AdobeStock_937620382.mov
+artisti/
+artists_data.json
