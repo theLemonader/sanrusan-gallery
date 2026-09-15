@@ -6,9 +6,11 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Draga &amp; Aurel — SANRUSAN</title>
   <meta name="description" content="Draga &amp; Aurel, the Como studio of Draga Obradovic and Aurel K. Basedow. Transparency Matters, solo exhibition at SANRUSAN, Bucharest.">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('js')},3000);</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/vendor/lenis.css">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
     .crumbs { margin-bottom: clamp(2.5rem, 6vh, 4rem); }
@@ -129,6 +131,7 @@
       <a href="/preview/about/">About</a>
       <a href="#enquire">Contact</a>
     </nav>
+    <span class="header-clock mono" data-clock>Bucharest</span>
   </header>
 
   <main>
@@ -136,7 +139,7 @@
     <section class="section page-top" style="padding-bottom:0">
       <p class="crumbs mono reveal"><a href="/preview/artists/">Artists</a> &nbsp;/&nbsp; Draga &amp; Aurel</p>
 
-      <div class="artist-head reveal d1">
+      <div class="artist-head reveal">
         <img class="artist-logo" src="/assets/draga-aurel/logo-ink.svg" alt="Draga &amp; Aurel">
         <dl class="artist-facts mono">
           <dt>Studio</dt><dd>Como, Italy</dd>
@@ -146,17 +149,17 @@
       </div>
 
       <div class="artist-intro">
-        <figure class="artist-portrait reveal">
-          <div class="frame">
+        <figure class="artist-portrait">
+          <div class="frame" data-reveal="clip">
             <img src="/assets/draga-aurel/portrait.jpg" alt="Draga Obradovic and Aurel K. Basedow seated in their Como atelier among resin pieces" fetchpriority="high">
           </div>
           <figcaption class="caption"><span>Draga Obradovic &amp; Aurel K. Basedow</span><span>Como</span></figcaption>
         </figure>
 
-        <div class="artist-bio reveal d1">
-          <h1>Draga &amp; Aurel</h1>
-          <p class="mono">Draga Obradovic, designer &mdash; Aurel K. Basedow, artist</p>
-          <div class="body-text">
+        <div class="artist-bio">
+          <h1 data-split data-delay="200">Draga &amp; Aurel</h1>
+          <p class="mono reveal d1">Draga Obradovic, designer &mdash; Aurel K. Basedow, artist</p>
+          <div class="body-text reveal d2">
             <p>
               Draga &amp; Aurel is the studio of designer Draga Obradovic and artist
               Aurel K. Basedow, founded in Como in 2007. From an atelier close to the lake
@@ -189,18 +192,16 @@
 
     <!-- Quote -->
     <section class="section">
-      <figure class="quote reveal">
-        <blockquote>&ldquo;Clear, luminous, authentic.&rdquo;</blockquote>
-        <figcaption class="mono">Draga &amp; Aurel, on transparency</figcaption>
+      <figure class="quote">
+        <blockquote data-split>&ldquo;Clear, luminous, authentic.&rdquo;</blockquote>
+        <figcaption class="mono reveal d2">Draga &amp; Aurel, on transparency</figcaption>
       </figure>
     </section>
 
     <!-- Film -->
-    <figure class="film reveal" style="padding: 0 var(--pad)">
-      <div class="frame">
-        <video autoplay muted loop playsinline preload="metadata" poster="/assets/draga-aurel/film-studio-poster.jpg">
-          <source src="/assets/draga-aurel/film-studio.mp4" type="video/mp4">
-        </video>
+    <figure class="film" style="padding: 0 var(--pad)">
+      <div class="frame" data-reveal="clip">
+        <video autoplay muted loop playsinline preload="metadata" data-parallax="0.07" poster="/assets/draga-aurel/film-studio-poster.jpg" src="/assets/draga-aurel/film-studio.mp4"></video>
       </div>
       <figcaption class="caption"><span>Draga &amp; Aurel &mdash; Studio film</span><span>Film courtesy of the artists</span></figcaption>
     </figure>
@@ -209,13 +210,13 @@
     <section class="section">
       <div class="expo">
         <figure class="reveal">
-          <div class="frame">
-            <img src="/assets/draga-aurel/resin-detail.jpg" alt="Detail of layered blue resin poured over concrete" loading="lazy">
+          <div class="frame" data-reveal="clip">
+            <img data-parallax="0.06" src="/assets/draga-aurel/resin-detail.jpg" alt="Detail of layered blue resin poured over concrete" loading="lazy">
           </div>
         </figure>
         <div class="reveal d1">
           <p class="section-label" style="margin-bottom:0">At SANRUSAN &mdash; Exhibition 01</p>
-          <h2 class="display">Transparency Matters</h2>
+          <h2 class="display" data-split>Transparency Matters</h2>
           <div class="body-text">
             <p>
               Draga &amp; Aurel are the first artists to show at SANRUSAN, with a solo
@@ -236,40 +237,40 @@
 
     <!-- Objects -->
     <section class="section" style="padding-top:0">
-      <p class="section-label reveal">Draga &amp; Aurel&rsquo;s Objects &mdash; In the exhibition</p>
+      <p class="section-label">Draga &amp; Aurel&rsquo;s Objects &mdash; In the exhibition</p>
       <div class="objects">
         <article class="object reveal">
-          <div class="frame"><img src="/assets/draga-aurel/agatha.jpg" alt="Agatha coffee table" loading="lazy"></div>
+          <div class="frame" data-reveal="clip"><img src="/assets/draga-aurel/agatha.jpg" alt="Agatha coffee table" loading="lazy"></div>
           <h3 class="object-title">Agatha</h3>
           <p class="object-meta mono">Coffee table &mdash; &Oslash; 34 &times; H 50 cm</p>
           <p class="object-desc">An irregular disc of poured colour held in a matte bronze frame. Epoxy resin, bronze.</p>
         </article>
         <article class="object reveal d1">
-          <div class="frame"><img src="/assets/draga-aurel/lava.jpg" alt="Lava coffee table" loading="lazy"></div>
+          <div class="frame" data-reveal="clip" style="--d:120ms"><img src="/assets/draga-aurel/lava.jpg" alt="Lava coffee table" loading="lazy"></div>
           <h3 class="object-title">Lava</h3>
           <p class="object-meta mono">Coffee table &mdash; &Oslash; 60 &times; H 37.5 cm</p>
           <p class="object-desc">A thick resin top on a concrete cone, its surface eroded with sea salt until it reads like travertine.</p>
         </article>
         <article class="object reveal d2">
-          <div class="frame"><img src="/assets/draga-aurel/jade.jpg" alt="Jade stools" loading="lazy"></div>
+          <div class="frame" data-reveal="clip" style="--d:240ms"><img src="/assets/draga-aurel/jade.jpg" alt="Jade stools" loading="lazy"></div>
           <h3 class="object-title">Jade</h3>
           <p class="object-meta mono">Stool &mdash; &Oslash; 40 &times; H 46 cm</p>
           <p class="object-desc">A seat of blended colour resting on a cylinder of etched, veined brass. Epoxy resin, brass.</p>
         </article>
         <article class="object reveal">
-          <div class="frame"><img src="/assets/draga-aurel/cala.jpg" alt="Cala bench" loading="lazy"></div>
+          <div class="frame" data-reveal="clip"><img src="/assets/draga-aurel/cala.jpg" alt="Cala bench" loading="lazy"></div>
           <h3 class="object-title">Cala</h3>
           <p class="object-meta mono">Bench &mdash; 110 &times; 42.5 &times; H 40 cm</p>
           <p class="object-desc">Coarse concrete under deep layers of resin, after the shores and lakebed of Como. Steel base, burnished brass finish.</p>
         </article>
         <article class="object reveal d1">
-          <div class="frame"><img src="/assets/draga-aurel/joy.jpg" alt="Joy wall lamp" loading="lazy"></div>
+          <div class="frame" data-reveal="clip" style="--d:120ms"><img src="/assets/draga-aurel/joy.jpg" alt="Joy wall lamp" loading="lazy"></div>
           <h3 class="object-title">Joy</h3>
           <p class="object-meta mono">Wall lamp &mdash; 20 &times; 13 &times; H 160 cm</p>
           <p class="object-desc">A luminous column of layered resin that owes its glow to the Space Age. Epoxy resin, satin brass, LED.</p>
         </article>
         <article class="object reveal d2">
-          <div class="frame"><img src="/assets/draga-aurel/reverso.jpg" alt="Reverso room divider" loading="lazy"></div>
+          <div class="frame" data-reveal="clip" style="--d:240ms"><img src="/assets/draga-aurel/reverso.jpg" alt="Reverso room divider" loading="lazy"></div>
           <h3 class="object-title">Reverso</h3>
           <p class="object-meta mono">Room divider &mdash; 29 &times; 12 &times; H 270&ndash;330 cm</p>
           <p class="object-desc">A double-faced veil of cast colour that turns on its axis in a brass frame. Epoxy resin, semi-gloss brass.</p>
@@ -279,7 +280,7 @@
 
     <!-- Record -->
     <section class="section dark">
-      <p class="section-label reveal">Selected record</p>
+      <p class="section-label">Selected record</p>
       <div class="record">
         <div class="reveal">
           <h3 class="mono">Collections</h3>
@@ -318,7 +319,7 @@
     <!-- Enquire -->
     <section class="section contact" id="enquire">
       <div class="enquire">
-        <p class="statement reveal">Every piece is made to order in Como. <span class="dim">Ask us about sizes, colours and availability.</span></p>
+        <p class="statement" data-split>Every piece is made to order in Como. <span class="dim">Ask us about sizes, colours and availability.</span></p>
         <a class="link-arrow reveal d1" href="mailto:contact@sanrusan.gallery?subject=Draga%20%26%20Aurel%20%E2%80%94%20Transparency%20Matters">contact@sanrusan.gallery <span aria-hidden="true">&rarr;</span></a>
       </div>
       <p class="credits mono">
@@ -333,16 +334,12 @@
       <a href="/preview/about/">About</a>
       <a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a>
     </div>
-    <img class="footer-wordmark" src="/assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
+    <div class="footer-mark">
+      <img class="footer-wordmark" src="/assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
+    </div>
   </footer>
 
-  <script>
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      }
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
+  <script src="/assets/vendor/lenis.min.js"></script>
+  <script src="/assets/motion.js"></script>
 </body>
 </html>

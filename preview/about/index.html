@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>About — SANRUSAN</title>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('js')},3000);</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/vendor/lenis.css">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
     .about-intro .statement { max-width: 30ch; }
@@ -56,12 +58,13 @@
       <a href="/preview/about/" aria-current="page">About</a>
       <a href="#contact">Contact</a>
     </nav>
+    <span class="header-clock mono" data-clock>Bucharest</span>
   </header>
 
   <main>
     <section class="section page-top about-intro">
-      <p class="section-label reveal">About</p>
-      <p class="statement reveal d1">
+      <p class="section-label">About</p>
+      <p class="statement" data-split>
         A gallery for functional art in Bucharest. <span class="dim">Objects that can be used,
         and deserve to be looked at.</span>
       </p>
@@ -85,10 +88,10 @@
     </section>
 
     <section class="section" style="padding-top:0">
-      <p class="section-label reveal">Founders</p>
+      <p class="section-label">Founders</p>
       <div class="founders-grid">
         <article class="founder reveal">
-          <div class="frame"><img src="/people/anton-san.jpg" alt="Anton San" loading="lazy"></div>
+          <div class="frame" data-reveal="clip"><img src="/people/anton-san.jpg" alt="Anton San" loading="lazy"></div>
           <div>
             <h2 class="founder-name">Anton San</h2>
             <p class="mono">Co-founder</p>
@@ -104,7 +107,7 @@
           </div>
         </article>
         <article class="founder reveal d1">
-          <div class="frame"><img src="/people/valentin-rusan.jpg" alt="Valentin Rusan" loading="lazy"></div>
+          <div class="frame" data-reveal="clip"><img src="/people/valentin-rusan.jpg" alt="Valentin Rusan" loading="lazy"></div>
           <div>
             <h2 class="founder-name">Valentin Rusan</h2>
             <p class="mono">Co-founder</p>
@@ -122,7 +125,7 @@
     </section>
 
     <section class="section contact" id="contact">
-      <p class="section-label reveal">Contact</p>
+      <p class="section-label">Contact</p>
       <div class="contact-grid reveal d1">
         <div>
           <p class="contact-key mono">Enquiries</p>
@@ -146,16 +149,12 @@
       <a href="/preview/artists/">Artists</a>
       <a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a>
     </div>
-    <img class="footer-wordmark" src="/assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
+    <div class="footer-mark">
+      <img class="footer-wordmark" src="/assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
+    </div>
   </footer>
 
-  <script>
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      }
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
+  <script src="/assets/vendor/lenis.min.js"></script>
+  <script src="/assets/motion.js"></script>
 </body>
 </html>
