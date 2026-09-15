@@ -1,21 +1,194 @@
-// Vercel Edge Middleware — protects /artists with a shared password.
-// Password is stored as env var OUTREACH_PASSWORD (set in Vercel project settings).
-// Two ways for the user to enter:
+// Vercel Edge Middleware — password gates for two areas.
+//
+// /preview — the full site while the public homepage shows "Coming soon".
+//   Password entered through a POST form (never in the URL). The repo is public, so the code
+//   only holds a salted SHA-256 of the password; setting PREVIEW_PASSWORD in Vercel overrides it.
+//
+// /artists — outreach page, password in env var OUTREACH_PASSWORD.
 //   1) Visit /artists  -> sees login page, types password
 //   2) Visit /artists?pwd=SECRET -> auto-login, cookie set, clean URL
 //
 // Once authenticated a cookie is set for 30 days.
 
 export const config = {
-  matcher: ['/artists', '/artists/:path*'],
+  matcher: ['/artists', '/artists/:path*', '/preview', '/preview/:path*'],
 };
+
+const PREVIEW_SALT = 'sanrusan-preview:';
+const PREVIEW_HASH = 'be56136f22acd671052fe07c99e44e1302c4faa6fed0316126083d59d22e1050';
 
 async function sha256Hex(s) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+function safeEqual(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
 export default async function middleware(request) {
+  const { pathname } = new URL(request.url);
+  if (pathname === '/preview' || pathname.startsWith('/preview/')) return previewGate(request);
+  return artistsGate(request);
+}
+
+async function previewGate(request) {
+  const url = new URL(request.url);
+  const envPassword = (typeof process !== 'undefined' && process.env && process.env.PREVIEW_PASSWORD) || '';
+  const expectedHash = envPassword ? await sha256Hex(PREVIEW_SALT + envPassword) : PREVIEW_HASH;
+  const cookieToken = await sha256Hex('cookie:' + expectedHash);
+
+  const cookieHeader = request.headers.get('cookie') || '';
+  const cookieMatch = cookieHeader.match(/(?:^|;\s*)preview_auth=([a-f0-9]+)/);
+  if (cookieMatch && safeEqual(cookieMatch[1], cookieToken)) return;
+
+  let wrong = false;
+  if (request.method === 'POST') {
+    let supplied = '';
+    try {
+      const form = await request.formData();
+      supplied = String(form.get('password') || '').trim();
+    } catch (_) {}
+    if (supplied && safeEqual(await sha256Hex(PREVIEW_SALT + supplied), expectedHash)) {
+      return new Response(null, {
+        status: 303,
+        headers: {
+          Location: url.pathname + url.search,
+          'Set-Cookie': `preview_auth=${cookieToken}; Path=/preview; Max-Age=2592000; HttpOnly; SameSite=Lax; Secure`,
+          'Cache-Control': 'no-store',
+        },
+      });
+    }
+    wrong = true;
+  }
+
+  const html = PREVIEW_LOGIN_HTML.replace('{{ERROR}}', wrong ? '<p class="error" role="alert">Incorrect password</p>' : '');
+  return new Response(html, {
+    status: wrong ? 401 : 200,
+    headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' },
+  });
+}
+
+const PREVIEW_LOGIN_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>SANRUSAN — Private preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: #f3f0ea;
+    color: #161513;
+    font-family: "Spline Sans Mono", ui-monospace, monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(1.25rem, 3vh, 2rem) clamp(1.25rem, 4vw, 3.5rem);
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem 2rem;
+    font-size: 0.64rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #7a756c;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2.4rem;
+  }
+  .logo { width: min(420px, 72vw); height: auto; animation: rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  form {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    animation: rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  }
+  label {
+    font-size: 0.64rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #7a756c;
+  }
+  input {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(22, 21, 19, 0.25);
+    border-radius: 0;
+    color: #161513;
+    font: inherit;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-align: center;
+    padding: 0.7rem 0.2rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  input:focus { border-color: #161513; }
+  button {
+    appearance: none;
+    border: 1px solid #161513;
+    background: #161513;
+    color: #f3f0ea;
+    font: inherit;
+    font-size: 0.66rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  button:hover { background: transparent; color: #161513; }
+  .error {
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9a3b2e;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+  @media (prefers-reduced-motion: reduce) { .logo, form { animation: none; } }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="row"><span>Collectible Design Gallery</span><span>Private preview</span></div>
+    <main>
+      <img class="logo" src="/assets/logo-ink.png" alt="SANRUSAN">
+      <form method="POST">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" autocomplete="current-password" autofocus required>
+        <button type="submit">Enter</button>
+        {{ERROR}}
+      </form>
+    </main>
+    <div class="row"><span>Bucharest &mdash; 2026</span><span>contact@sanrusan.gallery</span></div>
+  </div>
+</body>
+</html>`;
+
+async function artistsGate(request) {
   const url = new URL(request.url);
   const password = (typeof process !== 'undefined' && process.env && process.env.OUTREACH_PASSWORD) || '';
 
