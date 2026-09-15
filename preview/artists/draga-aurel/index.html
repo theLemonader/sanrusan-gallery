@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Draga &amp; Aurel — SANRUSAN</title>
+  <meta name="description" content="Draga &amp; Aurel, the Como studio of Draga Obradovic and Aurel K. Basedow. Transparency Matters, solo exhibition at SANRUSAN, Bucharest.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .crumbs { margin-bottom: clamp(2.5rem, 6vh, 4rem); }
+    .crumbs a:hover { color: var(--ink); }
+
+    .artist-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: clamp(2rem, 5vh, 3.5rem);
+    }
+    .artist-logo { height: clamp(56px, 9vw, 104px); width: auto; }
+    .artist-facts {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 0.35rem 2rem;
+      text-align: left;
+    }
+    .artist-facts dt { color: var(--grey); }
+    .artist-facts dd { color: var(--ink); }
+
+    .artist-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      border-top: 1px solid var(--line);
+      padding-top: clamp(2rem, 5vh, 3rem);
+    }
+    .artist-portrait .frame { aspect-ratio: 4 / 5; }
+    .artist-bio h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 0.6rem;
+    }
+    .artist-bio .mono { margin-bottom: clamp(1.8rem, 4vh, 2.6rem); }
+    .artist-bio .body-text { max-width: 54ch; }
+
+    .quote {
+      margin: 0 auto;
+      max-width: 60rem;
+      text-align: center;
+    }
+    .quote blockquote {
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .quote figcaption { margin-top: 2rem; }
+
+    .film .frame { aspect-ratio: 16 / 9; }
+
+    .expo {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: center;
+    }
+    .expo .frame { aspect-ratio: 1 / 1; }
+    .expo h2 { margin: 0.8rem 0 1.8rem; font-size: clamp(2.2rem, 5vw, 4.4rem); }
+    .expo .body-text { max-width: 50ch; margin-bottom: 2.2rem; }
+
+    .object-desc {
+      margin-top: 0.7rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 36ch;
+    }
+
+    .record {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+    .record h3 { margin-bottom: 1.2rem; }
+    .record ul { list-style: none; border-top: 1px solid var(--line); }
+    .record li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+    .record li span:last-child { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--grey); white-space: nowrap; }
+
+    .enquire {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+    .enquire .statement { max-width: 22ch; }
+    .credits { margin-top: clamp(3rem, 7vh, 5rem); line-height: 2; }
+
+    @media (max-width: 860px) {
+      .artist-intro, .expo, .record { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header">
+    <a class="header-logo" href="/preview/" aria-label="SANRUSAN home">
+      <img src="/assets/logo-ink.png" alt="SANRUSAN">
+    </a>
+    <nav class="nav">
+      <a href="/preview/#exhibition">Exhibition</a>
+      <a href="/preview/artists/" aria-current="page">Artists</a>
+      <a href="/preview/about/">About</a>
+      <a href="#enquire">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Identity -->
+    <section class="section page-top" style="padding-bottom:0">
+      <p class="crumbs mono reveal"><a href="/preview/artists/">Artists</a> &nbsp;/&nbsp; Draga &amp; Aurel</p>
+
+      <div class="artist-head reveal d1">
+        <img class="artist-logo" src="/assets/draga-aurel/logo-ink.svg" alt="Draga &amp; Aurel">
+        <dl class="artist-facts mono">
+          <dt>Studio</dt><dd>Como, Italy</dd>
+          <dt>Founded</dt><dd>2007</dd>
+          <dt>Practice</dt><dd>Art &amp; collectible design</dd>
+        </dl>
+      </div>
+
+      <div class="artist-intro">
+        <figure class="artist-portrait reveal">
+          <div class="frame">
+            <img src="/assets/draga-aurel/portrait.jpg" alt="Draga Obradovic and Aurel K. Basedow seated in their Como atelier among resin pieces" fetchpriority="high">
+          </div>
+          <figcaption class="caption"><span>Draga Obradovic &amp; Aurel K. Basedow</span><span>Como</span></figcaption>
+        </figure>
+
+        <div class="artist-bio reveal d1">
+          <h1>Draga &amp; Aurel</h1>
+          <p class="mono">Draga Obradovic, designer &mdash; Aurel K. Basedow, artist</p>
+          <div class="body-text">
+            <p>
+              Draga &amp; Aurel is the studio of designer Draga Obradovic and artist
+              Aurel K. Basedow, founded in Como in 2007. From an atelier close to the lake
+              they work across art, collectible design and product design, and have never
+              been interested in keeping the three apart.
+            </p>
+            <p>
+              The studio made its name with early collections such as <em>Deshabill&eacute;</em>
+              (2007) and <em>Heritage</em> (2009), and with a way of reworking vintage objects
+              through a contemporary eye. With <em>Transparency Matters</em>, begun in 2019,
+              the work turned decisively towards material research.
+            </p>
+            <p>
+              Their references are precise: the essential volumes of Minimalism, the optimism
+              of Space Age design, the perceptual games of Op Art, the culture of the 1970s.
+              Resin, concrete, glass, bronze and brass are treated as active mediums rather
+              than finishes, poured, layered and polished by hand until colour appears
+              suspended inside the object.
+            </p>
+            <p>
+              Their work has been presented at Design Miami, Salon Art + Design in New York
+              and the Salone del Mobile in Milan, and with galleries including Rossana Orlandi
+              and Nilufar. Alongside their own editions, the studio has designed for some of
+              Italy&rsquo;s leading furniture houses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="section">
+      <figure class="quote reveal">
+        <blockquote>&ldquo;Clear, luminous, authentic.&rdquo;</blockquote>
+        <figcaption class="mono">Draga &amp; Aurel, on transparency</figcaption>
+      </figure>
+    </section>
+
+    <!-- Film -->
+    <figure class="film reveal" style="padding: 0 var(--pad)">
+      <div class="frame">
+        <video autoplay muted loop playsinline preload="metadata" poster="/assets/draga-aurel/film-studio-poster.jpg">
+          <source src="/assets/draga-aurel/film-studio.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption class="caption"><span>Draga &amp; Aurel &mdash; Studio film</span><span>Film courtesy of the artists</span></figcaption>
+    </figure>
+
+    <!-- At SANRUSAN -->
+    <section class="section">
+      <div class="expo">
+        <figure class="reveal">
+          <div class="frame">
+            <img src="/assets/draga-aurel/resin-detail.jpg" alt="Detail of layered blue resin poured over concrete" loading="lazy">
+          </div>
+        </figure>
+        <div class="reveal d1">
+          <p class="section-label" style="margin-bottom:0">At SANRUSAN &mdash; Exhibition 01</p>
+          <h2 class="display">Transparency Matters</h2>
+          <div class="body-text">
+            <p>
+              Draga &amp; Aurel are the first artists to show at SANRUSAN, with a solo
+              presentation of <em>Transparency Matters</em> in the gallery on Strada
+              Z&#259;gazului, Bucharest.
+            </p>
+            <p>
+              The selection brings together lighting, seating, tables and a room divider,
+              each piece made to order in the Como atelier and different in the way
+              only poured material can be. Some can be lived with, some can be walked
+              around, all of them change as the daylight moves across the room.
+            </p>
+          </div>
+          <a class="link-arrow" href="#enquire">Enquire about the collection <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objects -->
+    <section class="section" style="padding-top:0">
+      <p class="section-label reveal">Draga &amp; Aurel&rsquo;s Objects &mdash; In the exhibition</p>
+      <div class="objects">
+        <article class="object reveal">
+          <div class="frame"><img src="/assets/draga-aurel/agatha.jpg" alt="Agatha coffee table" loading="lazy"></div>
+          <h3 class="object-title">Agatha</h3>
+          <p class="object-meta mono">Coffee table &mdash; &Oslash; 34 &times; H 50 cm</p>
+          <p class="object-desc">An irregular disc of poured colour held in a matte bronze frame. Epoxy resin, bronze.</p>
+        </article>
+        <article class="object reveal d1">
+          <div class="frame"><img src="/assets/draga-aurel/lava.jpg" alt="Lava coffee table" loading="lazy"></div>
+          <h3 class="object-title">Lava</h3>
+          <p class="object-meta mono">Coffee table &mdash; &Oslash; 60 &times; H 37.5 cm</p>
+          <p class="object-desc">A thick resin top on a concrete cone, its surface eroded with sea salt until it reads like travertine.</p>
+        </article>
+        <article class="object reveal d2">
+          <div class="frame"><img src="/assets/draga-aurel/jade.jpg" alt="Jade stools" loading="lazy"></div>
+          <h3 class="object-title">Jade</h3>
+          <p class="object-meta mono">Stool &mdash; &Oslash; 40 &times; H 46 cm</p>
+          <p class="object-desc">A seat of blended colour resting on a cylinder of etched, veined brass. Epoxy resin, brass.</p>
+        </article>
+        <article class="object reveal">
+          <div class="frame"><img src="/assets/draga-aurel/cala.jpg" alt="Cala bench" loading="lazy"></div>
+          <h3 class="object-title">Cala</h3>
+          <p class="object-meta mono">Bench &mdash; 110 &times; 42.5 &times; H 40 cm</p>
+          <p class="object-desc">Coarse concrete under deep layers of resin, after the shores and lakebed of Como. Steel base, burnished brass finish.</p>
+        </article>
+        <article class="object reveal d1">
+          <div class="frame"><img src="/assets/draga-aurel/joy.jpg" alt="Joy wall lamp" loading="lazy"></div>
+          <h3 class="object-title">Joy</h3>
+          <p class="object-meta mono">Wall lamp &mdash; 20 &times; 13 &times; H 160 cm</p>
+          <p class="object-desc">A luminous column of layered resin that owes its glow to the Space Age. Epoxy resin, satin brass, LED.</p>
+        </article>
+        <article class="object reveal d2">
+          <div class="frame"><img src="/assets/draga-aurel/reverso.jpg" alt="Reverso room divider" loading="lazy"></div>
+          <h3 class="object-title">Reverso</h3>
+          <p class="object-meta mono">Room divider &mdash; 29 &times; 12 &times; H 270&ndash;330 cm</p>
+          <p class="object-desc">A double-faced veil of cast colour that turns on its axis in a brass frame. Epoxy resin, semi-gloss brass.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Record -->
+    <section class="section dark">
+      <p class="section-label reveal">Selected record</p>
+      <div class="record">
+        <div class="reveal">
+          <h3 class="mono">Collections</h3>
+          <ul>
+            <li><span>Transparency Matters</span><span>2019 &mdash;</span></li>
+            <li><span>Heritage</span><span>2009</span></li>
+            <li><span>Deshabill&eacute;</span><span>2007</span></li>
+          </ul>
+        </div>
+        <div class="reveal d1">
+          <h3 class="mono">Presented at</h3>
+          <ul>
+            <li><span>SANRUSAN, Bucharest</span><span>2026 &mdash; Solo</span></li>
+            <li><span>Design Miami</span><span>Fair</span></li>
+            <li><span>Salon Art + Design, New York</span><span>Fair</span></li>
+            <li><span>Salone del Mobile, Milan</span><span>Fair</span></li>
+            <li><span>Galleria Rossana Orlandi</span><span>Gallery</span></li>
+            <li><span>Nilufar</span><span>Gallery</span></li>
+          </ul>
+        </div>
+        <div class="reveal d2">
+          <h3 class="mono">Designed for</h3>
+          <ul>
+            <li><span>Baxter</span><span></span></li>
+            <li><span>Gallotti&amp;Radice</span><span></span></li>
+            <li><span>Giorgetti</span><span></span></li>
+            <li><span>Poltrona Frau</span><span></span></li>
+            <li><span>Visionnaire</span><span></span></li>
+            <li><span>Wall&amp;dec&ograve;</span><span></span></li>
+          </ul>
+        </div>
+      </div>
+      <style>.dark .record ul { border-color: rgba(243,240,234,0.22); } .dark .record li { border-color: rgba(243,240,234,0.1); color: rgba(243,240,234,0.85); } .dark .record li span:last-child { color: rgba(243,240,234,0.5); }</style>
+    </section>
+
+    <!-- Enquire -->
+    <section class="section contact" id="enquire">
+      <div class="enquire">
+        <p class="statement reveal">Every piece is made to order in Como. <span class="dim">Ask us about sizes, colours and availability.</span></p>
+        <a class="link-arrow reveal d1" href="mailto:contact@sanrusan.gallery?subject=Draga%20%26%20Aurel%20%E2%80%94%20Transparency%20Matters">contact@sanrusan.gallery <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <p class="credits mono">
+        Images and films courtesy of Draga &amp; Aurel. Portrait: Anne Timmer, creative direction Valerie van der Werff.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-row mono">
+      <span>SANRUSAN &copy;2026 &mdash; All rights reserved</span>
+      <a href="/preview/about/">About</a>
+      <a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a>
+    </div>
+    <img class="footer-wordmark" src="/assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

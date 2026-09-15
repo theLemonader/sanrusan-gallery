@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Artists — SANRUSAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .artists-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: end;
+      margin-bottom: clamp(4rem, 9vh, 6.5rem);
+    }
+    .artists-head .body-text { max-width: 44ch; }
+    .group-title {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .artist-card .frame { aspect-ratio: 1 / 1; }
+    .artist-card .frame img { filter: grayscale(0.15); transition: transform 1.2s cubic-bezier(0.2, 0.6, 0.2, 1), filter 0.6s ease; }
+    .artist-card:hover .frame img { transform: scale(1.035); filter: none; }
+    .artist-card-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .artist-card-name span:last-child { transition: transform 0.3s ease; }
+    .artist-card:hover .artist-card-name span:last-child { transform: translateX(4px); }
+    .soon .frame {
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      border: 1px dashed var(--line);
+      background: transparent;
+    }
+    @media (max-width: 760px) {
+      .artists-head { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header">
+    <a class="header-logo" href="/preview/" aria-label="SANRUSAN home">
+      <img src="/assets/logo-ink.png" alt="SANRUSAN">
+    </a>
+    <nav class="nav">
+      <a href="/preview/#exhibition">Exhibition</a>
+      <a href="/preview/artists/" aria-current="page">Artists</a>
+      <a href="/preview/about/">About</a>
+      <a href="/preview/#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section page-top">
+      <p class="section-label reveal">Artists</p>
+      <div class="artists-head">
+        <h1 class="display reveal d1">Makers of<br>functional art</h1>
+        <div class="body-text reveal d2">
+          <p>
+            SANRUSAN works with a small number of studios at a time, and gives each of them
+            the whole gallery. The artists below are shown in Bucharest in dedicated
+            exhibitions, with their work available through the gallery.
+          </p>
+        </div>
+      </div>
+
+      <div class="group-title mono reveal">
+        <span>Presented</span>
+        <span>01</span>
+      </div>
+      <div class="objects">
+        <a class="object artist-card reveal" href="/preview/artists/draga-aurel/">
+          <div class="frame"><img src="/assets/draga-aurel/portrait.jpg" alt="Draga Obradovic and Aurel K. Basedow" loading="lazy"></div>
+          <p class="artist-card-name"><span>Draga &amp; Aurel</span><span aria-hidden="true">&rarr;</span></p>
+          <p class="object-meta mono">Como, Italy &mdash; Exhibition 01</p>
+        </a>
+        <div class="object soon reveal d1" aria-hidden="true">
+          <div class="frame"><span class="mono">Exhibition 02</span></div>
+          <p class="artist-card-name" style="color:var(--grey)"><span>To be announced</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-row mono">
+      <span>SANRUSAN &copy;2026 &mdash; All rights reserved</span>
+      <a href="/preview/about/">About</a>
+      <a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a>
+    </div>
+    <img class="footer-wordmark" src="/assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

@@ -3,458 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SANRUSAN — Functional Art, Bucharest</title>
-  <meta name="description" content="SANRUSAN is a collectible design gallery in Bucharest. Functional art: objects that hold a body and a question with equal seriousness.">
+  <title>SANRUSAN — Coming Soon</title>
+  <meta name="description" content="SANRUSAN, a collectible design gallery in Bucharest. Coming soon.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-  :root {
-    --paper: #f3f0ea;
-    --paper-deep: #ebe7df;
-    --ink: #161513;
-    --ink-soft: #33312d;
-    --grey: #7a756c;
-    --line: rgba(22, 21, 19, 0.16);
-    --line-soft: rgba(22, 21, 19, 0.09);
-    --ivory: #f3f0ea;
-    --pad: clamp(1.25rem, 4vw, 3.5rem);
-  }
+    :root {
+      --paper: #f3f0ea;
+      --ink: #161513;
+      --grey: #7a756c;
+      --line: rgba(22, 21, 19, 0.16);
+      --pad: clamp(1.25rem, 4vw, 3.5rem);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Spline Sans Mono", ui-monospace, monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    .grain {
+      position: fixed; inset: -50%;
+      pointer-events: none;
+      opacity: 0.28;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+      mix-blend-mode: multiply;
+    }
 
-  html { scroll-behavior: smooth; }
+    .page {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(1.25rem, 3vh, 2rem) var(--pad);
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.6rem 2rem;
+      font-size: 0.64rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+    .row a { border-bottom: 1px solid transparent; transition: color 0.25s ease, border-color 0.25s ease; }
+    .row a:hover { color: var(--ink); border-color: var(--ink); }
 
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Archivo", sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.6rem, 4vh, 2.6rem);
+      text-align: center;
+    }
+    .logo {
+      width: min(560px, 78vw);
+      height: auto;
+      opacity: 0;
+      animation: rise 1.6s cubic-bezier(0.2, 0.6, 0.2, 1) 0.2s forwards;
+    }
+    .soon {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--grey);
+      opacity: 0;
+      animation: rise 1.4s cubic-bezier(0.2, 0.6, 0.2, 1) 0.9s forwards;
+    }
+    .soon::before, .soon::after {
+      content: "";
+      width: 2rem;
+      height: 1px;
+      background: var(--line);
+    }
 
-  ::selection { background: var(--ink); color: var(--paper); }
-
-  img { display: block; max-width: 100%; }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* ── Grain ── */
-  .grain {
-    position: fixed; inset: -50%;
-    pointer-events: none;
-    z-index: 40;
-    opacity: 0.28;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
-    mix-blend-mode: multiply;
-  }
-
-  /* ── Header ── */
-  .header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.1rem var(--pad);
-    background: color-mix(in srgb, var(--paper) 82%, transparent);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .header-logo img { height: 12px; width: auto; }
-  .nav {
-    display: flex;
-    gap: clamp(1.25rem, 3vw, 2.75rem);
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-  }
-  .nav a {
-    position: relative;
-    padding-bottom: 2px;
-    color: var(--ink-soft);
-    transition: color 0.25s ease;
-  }
-  .nav a::after {
-    content: "";
-    position: absolute;
-    left: 0; bottom: 0;
-    width: 100%; height: 1px;
-    background: var(--ink);
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s cubic-bezier(0.6, 0, 0.2, 1);
-  }
-  .nav a:hover { color: var(--ink); }
-  .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
-
-  /* ── Hero ── */
-  .hero {
-    padding: clamp(8rem, 16vh, 12rem) var(--pad) 0;
-  }
-  .hero-intro {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
-  }
-  .hero-intro p {
-    max-width: 46ch;
-    font-size: clamp(0.95rem, 1.35vw, 1.15rem);
-    line-height: 1.65;
-    color: var(--ink-soft);
-    text-indent: 3.5em;
-  }
-  .hero-title {
-    font-size: clamp(2.9rem, 8.4vw, 7.5rem);
-    font-weight: 500;
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-  }
-  .hero-title .dash { font-weight: 400; }
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 2.5rem;
-    justify-content: space-between;
-    align-items: baseline;
-    margin: clamp(2rem, 5vh, 3.5rem) 0 1.4rem;
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.64rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--grey);
-  }
-
-  /* ── Hero image ── */
-  .hero-figure {
-    padding: 0 var(--pad);
-  }
-  .hero-figure img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-  .hero-figure figcaption {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.8rem 0 0;
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--grey);
-  }
-
-  /* ── Shared section shell ── */
-  .section {
-    padding: clamp(5.5rem, 12vh, 9rem) var(--pad);
-  }
-  .section-label {
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    color: var(--grey);
-    margin-bottom: clamp(2.5rem, 6vh, 4rem);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .section-label::before {
-    content: "";
-    width: 2.2rem;
-    height: 1px;
-    background: var(--ink);
-    flex: none;
-  }
-
-  /* ── Manifest (dark band) ── */
-  .manifest {
-    background: var(--ink);
-    color: var(--ivory);
-    margin-top: clamp(5rem, 11vh, 8rem);
-  }
-  .manifest .section-label { color: rgba(243, 240, 234, 0.55); }
-  .manifest .section-label::before { background: var(--ivory); }
-  .manifest-text {
-    max-width: 62rem;
-    font-size: clamp(1.5rem, 3.4vw, 2.7rem);
-    font-weight: 500;
-    line-height: 1.32;
-    letter-spacing: -0.015em;
-  }
-  .manifest-text .dim { color: rgba(243, 240, 234, 0.45); }
-  .manifest-logo {
-    margin-top: clamp(3.5rem, 8vh, 5.5rem);
-  }
-  .manifest-logo img {
-    height: 11px;
-    width: auto;
-    opacity: 0.5;
-  }
-
-  /* ── Founders ── */
-  .founders-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 5vw, 5rem);
-    max-width: 72rem;
-  }
-  .founder-photo {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    filter: grayscale(1) contrast(1.04);
-    margin-bottom: 1.6rem;
-  }
-  .founder-name {
-    font-size: clamp(1.25rem, 2vw, 1.6rem);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-  .founder-role {
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--grey);
-    margin: 0.5rem 0 1.2rem;
-  }
-  .founder-bio {
-    font-size: 0.92rem;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    border-top: 1px solid var(--line);
-    padding-top: 1.2rem;
-  }
-
-  /* ── Contact ── */
-  .contact { background: var(--paper-deep); }
-  .contact-statement {
-    font-size: clamp(1.7rem, 3.8vw, 3.1rem);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    max-width: 26ch;
-    margin-bottom: clamp(3rem, 7vh, 5rem);
-  }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
-    max-width: 72rem;
-    border-top: 1px solid var(--line);
-    padding-top: 2rem;
-  }
-  .contact-key {
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--grey);
-    margin-bottom: 0.7rem;
-  }
-  .contact-value {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--ink-soft);
-  }
-  .contact-value a {
-    border-bottom: 1px solid var(--line);
-    transition: border-color 0.25s ease, color 0.25s ease;
-  }
-  .contact-value a:hover { color: var(--ink); border-color: var(--ink); }
-
-  /* ── Footer ── */
-  .footer {
-    padding: clamp(3rem, 7vh, 5rem) var(--pad) 0;
-    border-top: 1px solid var(--line-soft);
-  }
-  .footer-row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem 2.5rem;
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--grey);
-    margin-bottom: clamp(3rem, 8vh, 5.5rem);
-  }
-  .footer-row a:hover { color: var(--ink); }
-  .footer-wordmark {
-    width: 100%;
-    height: auto;
-    margin-bottom: clamp(1.5rem, 4vh, 3rem);
-  }
-
-  /* ── Reveal animations ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 0.9s cubic-bezier(0.2, 0.6, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
-  }
-  .reveal.in { opacity: 1; transform: none; }
-  .reveal.d1 { transition-delay: 0.08s; }
-  .reveal.d2 { transition-delay: 0.16s; }
-  .reveal.d3 { transition-delay: 0.24s; }
-
-  /* ── Responsive ── */
-  @media (max-width: 760px) {
-    .hero-intro { justify-content: flex-start; }
-    .hero-intro p { text-indent: 2.5em; }
-    .founders-grid { grid-template-columns: 1fr; gap: 3.5rem; }
-    .contact-grid { grid-template-columns: 1fr; gap: 1.8rem; }
-    .nav { gap: 1.1rem; font-size: 0.6rem; letter-spacing: 0.16em; }
-    .header { padding: 1rem 1.25rem; }
-    .header-logo img { height: 10px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    html { scroll-behavior: auto; }
-  }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo, .soon { animation: none; opacity: 1; }
+    }
+    @media (max-width: 600px) {
+      .row { justify-content: center; text-align: center; }
+    }
   </style>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
-
-  <header class="header">
-    <a class="header-logo" href="#top" aria-label="SANRUSAN">
-      <img src="assets/logo-ink.png" alt="SANRUSAN">
-    </a>
-    <nav class="nav">
-      <a href="#manifest">Manifest</a>
-      <a href="#founders">Founders</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-intro reveal">
-        <p>
-          A gallery for objects that refuse to choose between being used and being
-          contemplated. Furniture, lighting and sculptural works in editions,
-          made by hand, chosen slowly.
-        </p>
-      </div>
-      <h1 class="hero-title reveal d1">
-        Functional Art <span class="dash">&mdash;</span><br>
-        Collectible Design
-      </h1>
-      <div class="hero-meta reveal d2">
-        <span>Gallery</span>
-        <span>Strada Z&#259;gazului 21&ndash;25, Bucharest</span>
-        <span>Est. 2026</span>
-      </div>
-    </section>
-
-    <figure class="hero-figure reveal d3">
-      <img src="assets/hero-object.jpg" alt="A sculptural travertine chair standing alone in an empty ivory gallery space" fetchpriority="high">
-      <figcaption>
-        <span>Opening &mdash; Bucharest</span>
-        <span>2026</span>
-      </figcaption>
-    </figure>
-
-    <!-- Manifest -->
-    <section class="section manifest" id="manifest">
-      <p class="section-label reveal">Manifest</p>
-      <p class="manifest-text reveal d1">
-        SANRUSAN is a gallery for functional art.
-        <span class="dim">We believe a chair can hold a body and a question with equal
-        seriousness, and that the most considered work being made today is the work
-        in which design has stopped pretending it isn&rsquo;t art.</span>
-      </p>
-      <div class="manifest-logo reveal d2">
-        <img src="assets/logo-ivory.png" alt="">
-      </div>
-    </section>
-
-    <!-- Founders -->
-    <section class="section" id="founders">
-      <p class="section-label reveal">The Founders</p>
-      <div class="founders-grid">
-        <article class="reveal d1">
-          <img class="founder-photo" src="people/anton-san.jpg" alt="Anton San" loading="lazy">
-          <h2 class="founder-name">Anton San</h2>
-          <p class="founder-role">Co-founder</p>
-          <p class="founder-bio">
-            A director and creative entrepreneur based in Bucharest. Founder of a video production
-            company specialising in high-end commercial filmmaking, campaigns and brand films for
-            fashion, lifestyle and luxury houses, and co-founder of IRIME Gallery, a multidisciplinary
-            space joining a concept store, contemporary art gallery, creative atelier and private event
-            venue. As founder and creative director of notRainProof, an independent fashion label
-            devoted to craftsmanship and limited collections, he applies one standard across film,
-            fashion and curation: precise visual identity, lasting cultural value.
-          </p>
-        </article>
-        <article class="reveal d2">
-          <img class="founder-photo" src="people/valentin-rusan.jpg" alt="Valentin Rusan" loading="lazy">
-          <h2 class="founder-name">Valentin Rusan</h2>
-          <p class="founder-role">Co-founder</p>
-          <p class="founder-bio">
-            A technology entrepreneur working between Romania and the United States, with a career
-            built on data and artificial intelligence, most recently a global AI-native data platform for
-            private markets in emerging regions. Architecture and collectible design have run through
-            that career as a private discipline: studied, collected and practised in his own projects.
-            SANRUSAN is that discipline made public, an institution built with the same rigour as his
-            companies, in service of objects rather than software.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section contact" id="contact">
-      <p class="section-label reveal">Contact</p>
-      <p class="contact-statement reveal d1">Every object, intentional.</p>
-      <div class="contact-grid reveal d2">
-        <div>
-          <p class="contact-key">Anton San</p>
-          <p class="contact-value"><a href="mailto:san@sanrusan.gallery">san@sanrusan.gallery</a></p>
-        </div>
-        <div>
-          <p class="contact-key">Valentin Rusan</p>
-          <p class="contact-value"><a href="mailto:valentin@sanrusan.gallery">valentin@sanrusan.gallery</a></p>
-        </div>
-        <div>
-          <p class="contact-key">Visit</p>
-          <p class="contact-value">
-            Strada Z&#259;gazului 21&ndash;25<br>
-            Sector 1, Bucharest<br>
-            <a href="https://instagram.com/sanrusangallery" target="_blank" rel="noopener">@sanrusangallery</a>
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-row">
-      <span>SANRUSAN &copy;2026 &mdash; All rights reserved</span>
-      <a href="mailto:san@sanrusan.gallery">san@sanrusan.gallery</a>
-      <a href="https://instagram.com/sanrusangallery" target="_blank" rel="noopener">Instagram</a>
+  <div class="page">
+    <div class="row">
+      <span>Collectible Design Gallery</span>
+      <span>Bucharest &mdash; 2026</span>
     </div>
-    <img class="footer-wordmark" src="assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
-  </footer>
 
-  <script>
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      }
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
+    <main class="center">
+      <h1><img class="logo" src="/assets/logo-ink.png" alt="SANRUSAN"></h1>
+      <p class="soon">Coming soon</p>
+    </main>
+
+    <div class="row">
+      <a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a>
+      <span>Strada Z&#259;gazului 21&ndash;25</span>
+      <a href="https://instagram.com/sanrusangallery" target="_blank" rel="noopener">@sanrusangallery</a>
+    </div>
+  </div>
 </body>
 </html>

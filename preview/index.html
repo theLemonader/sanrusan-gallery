@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SANRUSAN — Functional Art, Bucharest</title>
+  <meta name="description" content="SANRUSAN is a collectible design gallery in Bucharest. Functional art: objects that hold a body and a question with equal seriousness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .hero-intro {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: clamp(2.5rem, 6vh, 4.5rem);
+    }
+    .hero-intro p {
+      max-width: 46ch;
+      font-size: clamp(0.95rem, 1.35vw, 1.15rem);
+      line-height: 1.65;
+      color: var(--ink-soft);
+      text-indent: 3.5em;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 2.5rem;
+      justify-content: space-between;
+      margin: clamp(2rem, 5vh, 3.5rem) 0 1.4rem;
+    }
+    .hero-figure { padding: 0 var(--pad); }
+    .hero-figure .frame { aspect-ratio: 16 / 9; }
+
+    .manifest { margin-top: clamp(5rem, 11vh, 8rem); }
+    .manifest .statement { max-width: 62rem; }
+
+    /* Exhibition 01 */
+    .expo-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: end;
+      margin-bottom: clamp(3rem, 7vh, 5rem);
+    }
+    .expo-kicker {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.6rem;
+    }
+    .expo-kicker .da-logo { height: 30px; width: auto; }
+    .expo-kicker .x { font-family: var(--mono); font-size: 0.7rem; color: var(--grey); }
+    .expo-kicker img:not(.da-logo) { height: 10px; width: auto; }
+    .expo-film .frame { aspect-ratio: 16 / 9; }
+    .expo-objects { margin-top: clamp(4rem, 9vh, 6.5rem); }
+    .expo-foot {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: clamp(3rem, 7vh, 5rem);
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 760px) {
+      .hero-intro { justify-content: flex-start; }
+      .hero-intro p { text-indent: 2.5em; }
+      .expo-head { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header">
+    <a class="header-logo" href="/preview/" aria-label="SANRUSAN home">
+      <img src="/assets/logo-ink.png" alt="SANRUSAN">
+    </a>
+    <nav class="nav">
+      <a href="#exhibition">Exhibition</a>
+      <a href="/preview/artists/">Artists</a>
+      <a href="/preview/about/">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section page-top" style="padding-bottom:0">
+      <div class="hero-intro reveal">
+        <p>
+          A gallery for objects that refuse to choose between being used and being
+          contemplated. Furniture, lighting and sculptural works in editions,
+          made by hand, chosen slowly.
+        </p>
+      </div>
+      <h1 class="display reveal d1">
+        Functional Art <span style="font-weight:400">&mdash;</span><br>
+        Collectible Design
+      </h1>
+      <div class="hero-meta mono reveal d2">
+        <span>Gallery</span>
+        <span>Strada Z&#259;gazului 21&ndash;25, Bucharest</span>
+        <span>Est. 2026</span>
+      </div>
+    </section>
+
+    <figure class="hero-figure reveal d3">
+      <div class="frame">
+        <img src="/assets/hero-object.jpg" alt="A sculptural travertine chair standing alone in an empty ivory gallery space" fetchpriority="high">
+      </div>
+      <figcaption class="caption">
+        <span>Opening &mdash; Bucharest</span>
+        <span>2026</span>
+      </figcaption>
+    </figure>
+
+    <section class="section dark manifest" id="manifest">
+      <p class="section-label reveal">Manifest</p>
+      <p class="statement reveal d1">
+        SANRUSAN is a gallery for functional art.
+        <span class="dim">We believe a chair can hold a body and a question with equal
+        seriousness, and that the most considered work being made today is the work
+        in which design has stopped pretending it isn&rsquo;t art.</span>
+      </p>
+    </section>
+
+    <!-- Exhibition 01 -->
+    <section class="section" id="exhibition">
+      <p class="section-label reveal">Exhibition 01 &mdash; Solo</p>
+
+      <div class="expo-head">
+        <div class="reveal d1">
+          <div class="expo-kicker">
+            <img class="da-logo" src="/assets/draga-aurel/logo-ink.svg" alt="Draga &amp; Aurel">
+            <span class="x">&times;</span>
+            <img src="/assets/logo-ink.png" alt="SANRUSAN">
+          </div>
+          <h2 class="display">Transparency<br>Matters</h2>
+        </div>
+        <div class="body-text reveal d2">
+          <p>
+            SANRUSAN opens with a solo presentation by Draga &amp; Aurel, the Como studio
+            of designer Draga Obradovic and artist Aurel K. Basedow, and the first artists
+            to show in the gallery.
+          </p>
+          <p>
+            Begun in 2019, <em>Transparency Matters</em> treats transparency as both a material
+            and a method. Epoxy resin is poured by hand in successive layers over brass,
+            bronze and concrete until colour seems to hang inside the object, changing
+            with the light of the room and the position of the viewer.
+          </p>
+        </div>
+      </div>
+
+      <figure class="expo-film reveal">
+        <div class="frame">
+          <video autoplay muted loop playsinline preload="metadata" poster="/assets/draga-aurel/film-transparency-matters-poster.jpg">
+            <source src="/assets/draga-aurel/film-transparency-matters.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption class="caption">
+          <span>Transparency Matters &mdash; Draga &amp; Aurel</span>
+          <span>Film courtesy of the artists</span>
+        </figcaption>
+      </figure>
+
+      <div class="objects expo-objects">
+        <article class="object reveal">
+          <div class="frame"><img src="/assets/draga-aurel/agatha.jpg" alt="Agatha coffee table in resin and bronze" loading="lazy"></div>
+          <h3 class="object-title">Agatha</h3>
+          <p class="object-meta mono">Coffee table &mdash; Resin, bronze</p>
+        </article>
+        <article class="object reveal d1">
+          <div class="frame"><img src="/assets/draga-aurel/lava.jpg" alt="Lava coffee tables in resin and concrete" loading="lazy"></div>
+          <h3 class="object-title">Lava</h3>
+          <p class="object-meta mono">Coffee table &mdash; Resin, concrete</p>
+        </article>
+        <article class="object reveal d2">
+          <div class="frame"><img src="/assets/draga-aurel/cala.jpg" alt="Cala bench in resin and concrete" loading="lazy"></div>
+          <h3 class="object-title">Cala</h3>
+          <p class="object-meta mono">Bench &mdash; Resin, concrete, brass</p>
+        </article>
+      </div>
+
+      <div class="expo-foot reveal">
+        <p class="mono">At SANRUSAN &mdash; Strada Z&#259;gazului 21&ndash;25, Bucharest</p>
+        <a class="link-arrow" href="/preview/artists/draga-aurel/">Discover Draga &amp; Aurel <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <p class="section-label reveal">Contact</p>
+      <p class="contact-statement reveal d1">Every object, intentional.</p>
+      <div class="contact-grid reveal d2">
+        <div>
+          <p class="contact-key mono">Enquiries</p>
+          <p class="contact-value"><a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a></p>
+        </div>
+        <div>
+          <p class="contact-key mono">Visit</p>
+          <p class="contact-value">Strada Z&#259;gazului 21&ndash;25<br>Sector 1, Bucharest</p>
+        </div>
+        <div>
+          <p class="contact-key mono">Follow</p>
+          <p class="contact-value"><a href="https://instagram.com/sanrusangallery" target="_blank" rel="noopener">@sanrusangallery</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-row mono">
+      <span>SANRUSAN &copy;2026 &mdash; All rights reserved</span>
+      <a href="/preview/about/">About</a>
+      <a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a>
+    </div>
+    <img class="footer-wordmark" src="/assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
