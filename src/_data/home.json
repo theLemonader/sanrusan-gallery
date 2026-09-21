@@ -1,0 +1,36 @@
+{
+  "title": "SANRUSAN — Functional Art, Bucharest",
+  "description": "SANRUSAN is a collectible design gallery in Bucharest. Functional art: objects that hold a body and a question with equal seriousness.",
+  "intro": "A gallery for objects that refuse to choose between being used and being contemplated. Made by hand, in editions, chosen slowly.",
+  "title_lines": ["Functional Art —", "Collectible Design"],
+  "film": {
+    "tag": "(Film) A single object — 00:15",
+    "poster": "/assets/film/single-object-poster.jpg",
+    "src_mobile": "/assets/film/single-object-1080.mp4",
+    "src_desktop": "/assets/film/single-object-1600.mp4",
+    "alt": "A single object — film by SANRUSAN",
+    "caption_title": "A single object.",
+    "caption_meta": "SANRUSAN — Film, 2026"
+  },
+  "meta_left": "Collectible design gallery",
+  "meta_scroll": "Scroll",
+  "meta_right": "Bucharest — Est. 2026",
+  "marquee": [
+    { "text": "Functional Art", "outline": false },
+    { "text": "Collectible Design", "outline": true },
+    { "text": "Bucharest", "outline": false },
+    { "text": "Est. 2026", "outline": true }
+  ],
+  "manifest_label": "Manifest",
+  "manifest": "SANRUSAN is a gallery for functional art. We believe a chair can hold a body and a question with equal seriousness, and that the most considered work being made today is the work in which design has stopped pretending it isn’t art.",
+  "exhibition": {
+    "label": "Exhibition 01 — Solo",
+    "artist": "draga-aurel",
+    "title_lines": ["Transparency", "Matters"],
+    "text": "SANRUSAN opens with a solo presentation by Draga & Aurel, the Como studio of designer Draga Obradovic and artist Aurel K. Basedow, and the first artists to show in the gallery.\n\nBegun in 2019, *Transparency Matters* treats transparency as both a material and a method. Epoxy resin is poured by hand in successive layers over brass, bronze and concrete until colour seems to hang inside the object, changing with the light of the room and the position of the viewer.",
+    "footnote": "At SANRUSAN — Strada Zăgazului 21–25, Bucharest",
+    "cta": "Discover Draga & Aurel"
+  },
+  "contact_label": "Contact",
+  "contact_statement": "Every object, intentional."
+}

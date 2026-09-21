@@ -1,0 +1,27 @@
+{
+  "title": "About — SANRUSAN",
+  "description": "SANRUSAN, a collectible design gallery in Bucharest, founded by Anton San and Valentin Rusan.",
+  "label": "About",
+  "statement_lead": "A gallery for functional art in Bucharest.",
+  "statement_dim": "Objects that can be used, and deserve to be looked at.",
+  "columns": [
+    "SANRUSAN opened in 2026 on Strada Zăgazului, in the north of the city. It shows collectible design: furniture, lighting and sculptural objects made by hand, in editions or as unique pieces, by studios whose work sits between design and art.",
+    "The gallery works slowly and with few artists at a time. Each exhibition gives one studio the whole space, long enough for the work to be seen properly and for the people who live with objects — collectors, architects, interior designers — to return to it."
+  ],
+  "founders_label": "Founders",
+  "founders": [
+    {
+      "name": "Anton San",
+      "role": "Co-founder",
+      "photo": "/people/anton-san.jpg",
+      "bio": "A director and creative entrepreneur based in Bucharest. Founder of a video production company specialising in high-end commercial filmmaking, campaigns and brand films for fashion, lifestyle and luxury houses, and co-founder of IRIME Gallery, a multidisciplinary space joining a concept store, contemporary art gallery, creative atelier and private event venue. As founder and creative director of notRainProof, an independent fashion label devoted to craftsmanship and limited collections, he applies one standard across film, fashion and curation: precise visual identity, lasting cultural value."
+    },
+    {
+      "name": "Valentin Rusan",
+      "role": "Co-founder",
+      "photo": "/people/valentin-rusan.jpg",
+      "bio": "A technology entrepreneur working between Romania and the United States, with a career built on data and artificial intelligence, most recently a global AI-native data platform for private markets in emerging regions. Architecture and collectible design have run through that career as a private discipline: studied, collected and practised in his own projects. SANRUSAN is that discipline made public, an institution built with the same rigour as his companies, in service of objects rather than software."
+    }
+  ],
+  "contact_label": "Contact"
+}

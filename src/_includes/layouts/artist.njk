@@ -1,0 +1,240 @@
+---
+current: artists
+navContact: "#enquire"
+eleventyComputed:
+  pageTitle: "{{ title | safe }} — SANRUSAN"
+  pageDescription: "{{ description | safe }}"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "head.njk" %}
+  <style>
+    .crumbs { margin-bottom: clamp(2.5rem, 6vh, 4rem); }
+    .crumbs a:hover { color: var(--ink); }
+
+    .artist-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: clamp(2rem, 5vh, 3.5rem);
+    }
+    .artist-logo { height: clamp(56px, 9vw, 104px); width: auto; }
+    .artist-facts {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 0.35rem 2rem;
+      text-align: left;
+    }
+    .artist-facts dt { color: var(--grey); }
+    .artist-facts dd { color: var(--ink); }
+
+    .artist-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      border-top: 1px solid var(--line);
+      padding-top: clamp(2rem, 5vh, 3rem);
+    }
+    .artist-portrait .frame { aspect-ratio: 4 / 5; }
+    .artist-bio h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 0.6rem;
+    }
+    .artist-bio .mono { margin-bottom: clamp(1.8rem, 4vh, 2.6rem); }
+    .artist-bio .body-text { max-width: 54ch; }
+
+    .quote {
+      margin: 0 auto;
+      max-width: 60rem;
+      text-align: center;
+    }
+    .quote blockquote {
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .quote figcaption { margin-top: 2rem; }
+
+    .film .frame { aspect-ratio: 16 / 9; }
+
+    .expo {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: center;
+    }
+    .expo .frame { aspect-ratio: 1 / 1; }
+    .expo h2 { margin: 0.8rem 0 1.8rem; font-size: clamp(2.2rem, 5vw, 4.4rem); }
+    .expo .body-text { max-width: 50ch; margin-bottom: 2.2rem; }
+
+    .object-desc {
+      margin-top: 0.7rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 36ch;
+    }
+
+    .record {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+    .record h3 { margin-bottom: 1.2rem; }
+    .record ul { list-style: none; border-top: 1px solid var(--line); }
+    .record li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+    .record li span:last-child { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--grey); white-space: nowrap; }
+
+    .enquire {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+    .enquire .statement { max-width: 22ch; }
+    .credits { margin-top: clamp(3rem, 7vh, 5rem); line-height: 2; }
+
+    @media (max-width: 860px) {
+      .artist-intro, .expo, .record { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+{% include "header.njk" %}
+
+  <main>
+    <!-- Identity -->
+    <section class="section page-top" style="padding-bottom:0">
+      <p class="crumbs mono reveal"><a href="/preview/artists/">Artists</a> &nbsp;/&nbsp; {{ title }}</p>
+
+      <div class="artist-head reveal">
+        <img class="artist-logo" src="{{ logo }}" alt="{{ title }}">
+        <dl class="artist-facts mono">
+{%- for fact in facts %}
+          <dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd>
+{%- endfor %}
+        </dl>
+      </div>
+
+      <div class="artist-intro">
+        <figure class="artist-portrait">
+          <div class="frame" data-reveal="clip">
+            <img src="{{ portrait }}" alt="{{ portrait_alt }}" fetchpriority="high">
+          </div>
+          <figcaption class="caption"><span>{{ portrait_caption_left }}</span><span>{{ portrait_caption_right }}</span></figcaption>
+        </figure>
+
+        <div class="artist-bio">
+          <h1 data-split data-delay="200">{{ title }}</h1>
+          <p class="mono reveal d1">{{ people_line }}</p>
+          <div class="body-text reveal d2">
+            {{ content | safe }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="section">
+      <figure class="quote">
+        <blockquote data-split>{{ quote }}</blockquote>
+        <figcaption class="mono reveal d2">{{ quote_caption }}</figcaption>
+      </figure>
+    </section>
+
+    <!-- Film -->
+    <figure class="film" style="padding: 0 var(--pad)">
+      <div class="frame" data-reveal="clip">
+        <video autoplay muted loop playsinline preload="metadata" data-parallax="0.07" poster="{{ film.poster }}" src="{{ film.src }}"></video>
+      </div>
+      <figcaption class="caption"><span>{{ film.caption_left }}</span><span>{{ film.caption_right }}</span></figcaption>
+    </figure>
+
+    <!-- At SANRUSAN -->
+    <section class="section">
+      <div class="expo">
+        <figure class="reveal">
+          <div class="frame" data-reveal="clip">
+            <img data-parallax="0.06" src="{{ exhibition.image }}" alt="{{ exhibition.image_alt }}" loading="lazy">
+          </div>
+        </figure>
+        <div class="reveal d1">
+          <p class="section-label" style="margin-bottom:0">{{ exhibition.label }}</p>
+          <h2 class="display" data-split>{{ exhibition.title }}</h2>
+          <div class="body-text">
+            {{ exhibition.text | md | safe }}
+          </div>
+          <a class="link-arrow" href="#enquire">{{ exhibition.cta }} <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objects -->
+    <section class="section" style="padding-top:0">
+      <p class="section-label">{{ objects_label }}</p>
+      <div class="objects">
+{%- set rowClasses = ["", " d1", " d2"] %}
+{%- set rowDelays = ["", "120ms", "240ms"] %}
+{%- for object in objects %}
+{%- set slot = loop.index0 % 3 %}
+        <article class="object reveal{{ rowClasses[slot] }}">
+          <div class="frame" data-reveal="clip"{% if rowDelays[slot] %} style="--d:{{ rowDelays[slot] }}"{% endif %}><img src="{{ object.image }}" alt="{{ object.alt }}" loading="lazy"></div>
+          <h3 class="object-title">{{ object.name }}</h3>
+          <p class="object-meta mono">{{ object.meta }}</p>
+          <p class="object-desc">{{ object.description }}</p>
+        </article>
+{%- endfor %}
+      </div>
+    </section>
+
+    <!-- Record -->
+    <section class="section dark">
+      <p class="section-label">{{ record_label }}</p>
+      <div class="record">
+{%- for group in record %}
+        <div class="reveal{{ rowClasses[loop.index0 % 3] }}">
+          <h3 class="mono">{{ group.heading }}</h3>
+          <ul>
+{%- for item in group.items %}
+            <li><span>{{ item.name }}</span><span>{{ item.note }}</span></li>
+{%- endfor %}
+          </ul>
+        </div>
+{%- endfor %}
+      </div>
+      <style>.dark .record ul { border-color: rgba(243,240,234,0.22); } .dark .record li { border-color: rgba(243,240,234,0.1); color: rgba(243,240,234,0.85); } .dark .record li span:last-child { color: rgba(243,240,234,0.5); }</style>
+    </section>
+
+    <!-- Enquire -->
+    <section class="section contact" id="enquire">
+      <div class="enquire">
+        <p class="statement" data-split>{{ enquire_lead }} <span class="dim">{{ enquire_dim }}</span></p>
+        <a class="link-arrow reveal d1" href="mailto:{{ site.email }}?subject={{ enquire_subject | urlencode }}">{{ site.email }} <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <p class="credits mono">
+        {{ credits }}
+      </p>
+    </section>
+  </main>
+
+{% include "footer.njk" %}
+</body>
+</html>

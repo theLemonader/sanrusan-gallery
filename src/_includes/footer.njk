@@ -1,0 +1,13 @@
+  <footer class="footer">
+    <div class="footer-row mono">
+      <span>{{ site.copyright }}</span>
+      <a href="{{ footerLinkHref | default('/preview/about/') }}">{{ footerLinkLabel | default('About') }}</a>
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </div>
+    <div class="footer-mark">
+      <img class="footer-wordmark" src="{{ site.logo_ink }}" alt="{{ site.name }}" loading="lazy">
+    </div>
+  </footer>
+
+  <script src="/assets/vendor/lenis.min.js"></script>
+  <script src="/assets/motion.js"></script>

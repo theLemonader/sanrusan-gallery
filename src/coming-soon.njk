@@ -1,10 +1,14 @@
+---
+permalink: /index.html
+eleventyExcludeFromCollections: true
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SANRUSAN — Coming Soon</title>
-  <meta name="description" content="SANRUSAN, a collectible design gallery in Bucharest. Coming soon.">
+  <title>{{ comingSoon.title }}</title>
+  <meta name="description" content="{{ comingSoon.description }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -102,19 +106,19 @@
   <div class="grain" aria-hidden="true"></div>
   <div class="page">
     <div class="row">
-      <span>Collectible Design Gallery</span>
-      <span>Bucharest &mdash; 2026</span>
+      <span>{{ comingSoon.top_left }}</span>
+      <span>{{ comingSoon.top_right }}</span>
     </div>
 
     <main class="center">
-      <h1><img class="logo" src="/assets/logo-ink.png" alt="SANRUSAN"></h1>
-      <p class="soon">Coming soon</p>
+      <h1><img class="logo" src="{{ site.logo_ink }}" alt="{{ site.name }}"></h1>
+      <p class="soon">{{ comingSoon.message }}</p>
     </main>
 
     <div class="row">
-      <a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a>
-      <span>Strada Z&#259;gazului 21&ndash;25</span>
-      <a href="https://instagram.com/sanrusangallery" target="_blank" rel="noopener">@sanrusangallery</a>
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <span>{{ site.address_line_1 }}</span>
+      <a href="{{ site.instagram_url }}" target="_blank" rel="noopener">{{ site.instagram_handle }}</a>
     </div>
   </div>
 </body>

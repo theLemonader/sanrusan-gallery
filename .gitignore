@@ -6,3 +6,5 @@ __pycache__/
 AdobeStock_937620382.mov
 artisti/
 artists_data.json
+node_modules/
+_site/

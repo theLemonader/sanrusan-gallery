@@ -1,0 +1,98 @@
+---
+permalink: /preview/about/index.html
+eleventyComputed:
+  pageTitle: "{{ about.title | safe }}"
+  pageDescription: "{{ about.description | safe }}"
+navContact: "#contact"
+current: about
+footerLinkHref: /preview/artists/
+footerLinkLabel: Artists
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "head.njk" %}
+  <style>
+    .about-intro .statement { max-width: 30ch; }
+    .about-cols {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      margin-top: clamp(3rem, 7vh, 5rem);
+      border-top: 1px solid var(--line);
+      padding-top: 2rem;
+    }
+    .about-cols .body-text { max-width: 50ch; }
+
+    .founders-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      max-width: 64rem;
+    }
+    .founder { display: grid; grid-template-columns: 38% minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+    .founder .frame { aspect-ratio: 4 / 5; }
+    .founder .frame img { filter: grayscale(1) contrast(1.04); }
+    .founder-name { font-size: 1.15rem; font-weight: 600; line-height: 1.2; }
+    .founder .mono { margin: 0.4rem 0 1rem; }
+    .founder-bio { font-size: 0.86rem; line-height: 1.7; color: var(--ink-soft); }
+
+    @media (max-width: 860px) {
+      .about-cols, .founders-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .founder { grid-template-columns: 1fr; }
+      .founder .frame { max-width: 60%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+{% include "header.njk" %}
+
+  <main>
+    <section class="section page-top about-intro">
+      <p class="section-label">{{ about.label }}</p>
+      <p class="statement" data-split>
+        {{ about.statement_lead }} <span class="dim">{{ about.statement_dim }}</span>
+      </p>
+      <div class="about-cols">
+{%- for column in about.columns %}
+        <div class="body-text reveal{% if not loop.first %} d1{% endif %}">
+          <p>
+            {{ column }}
+          </p>
+        </div>
+{%- endfor %}
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <p class="section-label">{{ about.founders_label }}</p>
+      <div class="founders-grid">
+{%- for founder in about.founders %}
+        <article class="founder reveal{% if not loop.first %} d1{% endif %}">
+          <div class="frame" data-reveal="clip"><img src="{{ founder.photo }}" alt="{{ founder.name }}" loading="lazy"></div>
+          <div>
+            <h2 class="founder-name">{{ founder.name }}</h2>
+            <p class="mono">{{ founder.role }}</p>
+            <p class="founder-bio">
+              {{ founder.bio }}
+            </p>
+          </div>
+        </article>
+{%- endfor %}
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <p class="section-label">{{ about.contact_label }}</p>
+{% include "contact-grid.njk" %}
+    </section>
+  </main>
+
+{% include "footer.njk" %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+  <header class="header">
+    <a class="header-logo" href="/preview/" aria-label="{{ site.name }} home">
+      <img src="{{ site.logo_ink }}" alt="{{ site.name }}">
+    </a>
+    <nav class="nav">
+      <a href="{{ navExhibition | default('/preview/#exhibition') }}">Exhibition</a>
+      <a href="/preview/artists/"{% if current == "artists" %} aria-current="page"{% endif %}>Artists</a>
+      <a href="/preview/about/"{% if current == "about" %} aria-current="page"{% endif %}>About</a>
+      <a href="{{ navContact | default('/preview/#contact') }}">Contact</a>
+    </nav>
+    <span class="header-clock mono" data-clock>Bucharest</span>
+  </header>

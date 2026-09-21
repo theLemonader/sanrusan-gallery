@@ -1,0 +1,94 @@
+---
+permalink: /preview/artists/index.html
+eleventyComputed:
+  pageTitle: "{{ artistsPage.title | safe }}"
+  pageDescription: "{{ artistsPage.description | safe }}"
+current: artists
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "head.njk" %}
+  <style>
+    .artists-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: end;
+      margin-bottom: clamp(4rem, 9vh, 6.5rem);
+    }
+    .artists-head .body-text { max-width: 44ch; }
+    .group-title {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    .artist-card .frame { aspect-ratio: 1 / 1; }
+    .artist-card .frame img { filter: grayscale(0.2); transition: scale 2.2s var(--ease-out), filter 0.8s ease; }
+    html.js .artist-card:hover .frame.in img { scale: 1.045; filter: none; transition-delay: 0ms; transition-duration: 1.4s, 0.8s; }
+    .artist-card-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .artist-card-name span:last-child { transition: transform 0.7s var(--ease-out); }
+    .artist-card:hover .artist-card-name span:last-child { transform: translateX(4px); }
+    .soon .frame {
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      border: 1px dashed var(--line);
+      background: transparent;
+    }
+    @media (max-width: 760px) {
+      .artists-head { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+{% include "header.njk" %}
+
+  <main>
+    <section class="section page-top">
+      <p class="section-label">{{ artistsPage.label }}</p>
+      <div class="artists-head">
+        <h1 class="display" data-split>{% for line in artistsPage.heading_lines %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</h1>
+        <div class="body-text reveal d2">
+          <p>
+            {{ artistsPage.intro }}
+          </p>
+        </div>
+      </div>
+
+      <div class="group-title mono reveal">
+        <span>{{ artistsPage.group_label }}</span>
+        <span>{{ artistsPage.group_count }}</span>
+      </div>
+      <div class="objects">
+{%- for entry in collections.artists %}
+        <a class="object artist-card reveal" href="{{ entry.url }}">
+          <div class="frame" data-reveal="clip"><img src="{{ entry.data.portrait }}" alt="{{ entry.data.portrait_alt }}" loading="lazy"></div>
+          <p class="artist-card-name"><span>{{ entry.data.title }}</span><span aria-hidden="true">&rarr;</span></p>
+          <p class="object-meta mono">{{ entry.data.card_meta }}</p>
+        </a>
+{%- endfor %}
+        <div class="object soon reveal d1" aria-hidden="true">
+          <div class="frame" data-reveal="clip" style="--d:140ms"><span class="mono">{{ artistsPage.soon_label }}</span></div>
+          <p class="artist-card-name" style="color:var(--grey)"><span>{{ artistsPage.soon_name }}</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% include "footer.njk" %}
+</body>
+</html>

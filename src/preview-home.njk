@@ -1,18 +1,17 @@
+---
+permalink: /preview/index.html
+eleventyComputed:
+  pageTitle: "{{ home.title | safe }}"
+  pageDescription: "{{ home.description | safe }}"
+preloadImage: /assets/film/single-object-poster.jpg
+navExhibition: "#exhibition"
+navContact: "#contact"
+eleventyExcludeFromCollections: true
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>SANRUSAN — Functional Art, Bucharest</title>
-  <meta name="description" content="SANRUSAN is a collectible design gallery in Bucharest. Functional art: objects that hold a body and a question with equal seriousness.">
-  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('js')},3000);</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/assets/film/single-object-poster.jpg">
-  <link rel="stylesheet" href="/assets/vendor/lenis.css">
-  <link rel="stylesheet" href="/assets/site.css">
+{% include "head.njk" %}
   <style>
     /* ── Film stage ── */
     .stage {
@@ -203,20 +202,10 @@
   </style>
 </head>
 <body>
+{% set artist = collections.artists | findArtist(home.exhibition.artist) %}
   <div class="grain" aria-hidden="true"></div>
 
-  <header class="header">
-    <a class="header-logo" href="/preview/" aria-label="SANRUSAN home">
-      <img src="/assets/logo-ink.png" alt="SANRUSAN">
-    </a>
-    <nav class="nav">
-      <a href="#exhibition">Exhibition</a>
-      <a href="/preview/artists/">Artists</a>
-      <a href="/preview/about/">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <span class="header-clock mono" data-clock>Bucharest</span>
-  </header>
+{% include "header.njk" %}
 
   <main>
     <!-- Film stage -->
@@ -224,33 +213,32 @@
       <div class="stage-sticky">
         <div class="stage-film">
           <video autoplay muted loop playsinline preload="auto"
-                 poster="/assets/film/single-object-poster.jpg"
-                 src="/assets/film/single-object-1080.mp4"
-                 data-src-sm="/assets/film/single-object-1080.mp4"
-                 data-src-lg="/assets/film/single-object-1600.mp4"
+                 poster="{{ home.film.poster }}"
+                 src="{{ home.film.src_mobile }}"
+                 data-src-sm="{{ home.film.src_mobile }}"
+                 data-src-lg="{{ home.film.src_desktop }}"
                  onloadeddata="this.classList.add('is-ready')"
-                 aria-label="A single object — film by SANRUSAN"></video>
+                 aria-label="{{ home.film.alt }}"></video>
         </div>
 
-        <p class="stage-tag mono">(Film) A single object &mdash; 00:15</p>
+        <p class="stage-tag mono">{{ home.film.tag }}</p>
 
         <div class="stage-copy">
           <p class="stage-intro">
-            A gallery for objects that refuse to choose between being used and being
-            contemplated. Made by hand, in editions, chosen slowly.
+            {{ home.intro }}
           </p>
-          <h1 class="stage-title display" data-split data-delay="250">Functional Art &mdash;<br>Collectible Design</h1>
+          <h1 class="stage-title display" data-split data-delay="250">{% for line in home.title_lines %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</h1>
         </div>
 
         <div class="stage-meta mono">
-          <span>Collectible design gallery</span>
-          <span class="stage-scroll">Scroll</span>
-          <span>Bucharest &mdash; Est. 2026</span>
+          <span>{{ home.meta_left }}</span>
+          <span class="stage-scroll">{{ home.meta_scroll }}</span>
+          <span>{{ home.meta_right }}</span>
         </div>
 
         <div class="stage-caption">
-          <p class="stage-caption-title">A single object.</p>
-          <p class="mono">SANRUSAN &mdash; Film, 2026</p>
+          <p class="stage-caption-title">{{ home.film.caption_title }}</p>
+          <p class="mono">{{ home.film.caption_meta }}</p>
         </div>
       </div>
     </section>
@@ -259,10 +247,9 @@
     <div class="marquee" data-marquee aria-hidden="true">
       <div class="marquee-track">
         <div class="marquee-group">
-          <span>Functional Art</span><span class="sep">&mdash;</span>
-          <span class="outline">Collectible Design</span><span class="sep">&mdash;</span>
-          <span>Bucharest</span><span class="sep">&mdash;</span>
-          <span class="outline">Est. 2026</span><span class="sep">&mdash;</span>
+{%- for word in home.marquee %}
+          <span{% if word.outline %} class="outline"{% endif %}>{{ word.text }}</span><span class="sep">&mdash;</span>
+{%- endfor %}
         </div>
       </div>
     </div>
@@ -271,113 +258,70 @@
     <section class="section dark" id="manifest">
       <div class="manifest-grid">
         <div>
-          <p class="section-label">Manifest</p>
+          <p class="section-label">{{ home.manifest_label }}</p>
         </div>
         <p class="statement" data-scrub>
-          SANRUSAN is a gallery for functional art. We believe a chair can hold a body and a
-          question with equal seriousness, and that the most considered work being made today
-          is the work in which design has stopped pretending it isn&rsquo;t art.
+          {{ home.manifest }}
         </p>
       </div>
     </section>
 
     <!-- Exhibition 01 -->
     <section class="section" id="exhibition">
-      <p class="section-label">Exhibition 01 &mdash; Solo</p>
+      <p class="section-label">{{ home.exhibition.label }}</p>
 
       <div class="expo-head">
         <div>
           <div class="expo-kicker reveal">
-            <img class="da-logo" src="/assets/draga-aurel/logo-ink.svg" alt="Draga &amp; Aurel">
+            <img class="da-logo" src="{{ artist.data.logo }}" alt="{{ artist.data.title }}">
             <span class="x">&times;</span>
-            <img class="sr-logo" src="/assets/logo-ink.png" alt="SANRUSAN">
+            <img class="sr-logo" src="{{ site.logo_ink }}" alt="{{ site.name }}">
           </div>
-          <h2 class="display" data-split>Transparency<br>Matters</h2>
+          <h2 class="display" data-split>{% for line in home.exhibition.title_lines %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</h2>
         </div>
         <div class="body-text reveal d2">
-          <p>
-            SANRUSAN opens with a solo presentation by Draga &amp; Aurel, the Como studio
-            of designer Draga Obradovic and artist Aurel K. Basedow, and the first artists
-            to show in the gallery.
-          </p>
-          <p>
-            Begun in 2019, <em>Transparency Matters</em> treats transparency as both a material
-            and a method. Epoxy resin is poured by hand in successive layers over brass,
-            bronze and concrete until colour seems to hang inside the object, changing
-            with the light of the room and the position of the viewer.
-          </p>
+          {{ home.exhibition.text | md | safe }}
         </div>
       </div>
 
       <figure class="expo-film">
         <div class="frame" data-reveal="clip">
           <video autoplay muted loop playsinline preload="metadata" data-parallax="0.07"
-                 poster="/assets/draga-aurel/film-transparency-matters-poster.jpg"
-                 src="/assets/draga-aurel/film-transparency-matters.mp4"></video>
+                 poster="{{ artist.data.exhibition.film_poster }}"
+                 src="{{ artist.data.exhibition.film }}"></video>
         </div>
         <figcaption class="caption reveal">
-          <span>Transparency Matters &mdash; Draga &amp; Aurel</span>
-          <span>Film courtesy of the artists</span>
+          <span>{{ artist.data.exhibition.film_caption_left }}</span>
+          <span>{{ artist.data.exhibition.film_caption_right }}</span>
         </figcaption>
       </figure>
 
       <div class="objects expo-objects">
-        <a class="object" href="/preview/artists/draga-aurel/">
-          <div class="frame" data-reveal="clip"><img src="/assets/draga-aurel/agatha.jpg" alt="Agatha coffee table in resin and bronze" loading="lazy"></div>
-          <h3 class="object-title reveal">Agatha</h3>
-          <p class="object-meta mono reveal">Coffee table &mdash; Resin, bronze</p>
+{%- set delays = ["", "120ms", "240ms"] %}
+{%- set classes = ["", " d1", " d2"] %}
+{%- for object in artist.data.objects | featured(3) %}
+        <a class="object" href="{{ artist.url }}">
+          <div class="frame" data-reveal="clip"{% if delays[loop.index0] %} style="--d:{{ delays[loop.index0] }}"{% endif %}><img src="{{ object.image }}" alt="{{ object.alt }}" loading="lazy"></div>
+          <h3 class="object-title reveal{{ classes[loop.index0] }}">{{ object.name }}</h3>
+          <p class="object-meta mono reveal{{ classes[loop.index0] }}">{{ object.home_meta }}</p>
         </a>
-        <a class="object" href="/preview/artists/draga-aurel/">
-          <div class="frame" data-reveal="clip" style="--d:120ms"><img src="/assets/draga-aurel/lava.jpg" alt="Lava coffee tables in resin and concrete" loading="lazy"></div>
-          <h3 class="object-title reveal d1">Lava</h3>
-          <p class="object-meta mono reveal d1">Coffee table &mdash; Resin, concrete</p>
-        </a>
-        <a class="object" href="/preview/artists/draga-aurel/">
-          <div class="frame" data-reveal="clip" style="--d:240ms"><img src="/assets/draga-aurel/cala.jpg" alt="Cala bench in resin and concrete" loading="lazy"></div>
-          <h3 class="object-title reveal d2">Cala</h3>
-          <p class="object-meta mono reveal d2">Bench &mdash; Resin, concrete, brass</p>
-        </a>
+{%- endfor %}
       </div>
 
       <div class="expo-foot reveal">
-        <p class="mono">At SANRUSAN &mdash; Strada Z&#259;gazului 21&ndash;25, Bucharest</p>
-        <a class="link-arrow" href="/preview/artists/draga-aurel/">Discover Draga &amp; Aurel <span aria-hidden="true">&rarr;</span></a>
+        <p class="mono">{{ home.exhibition.footnote }}</p>
+        <a class="link-arrow" href="{{ artist.url }}">{{ home.exhibition.cta }} <span aria-hidden="true">&rarr;</span></a>
       </div>
     </section>
 
     <!-- Contact -->
     <section class="section contact" id="contact">
-      <p class="section-label">Contact</p>
-      <p class="contact-statement" data-split>Every object, intentional.</p>
-      <div class="contact-grid reveal">
-        <div>
-          <p class="contact-key mono">Enquiries</p>
-          <p class="contact-value"><a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a></p>
-        </div>
-        <div>
-          <p class="contact-key mono">Visit</p>
-          <p class="contact-value">Strada Z&#259;gazului 21&ndash;25<br>Sector 1, Bucharest</p>
-        </div>
-        <div>
-          <p class="contact-key mono">Follow</p>
-          <p class="contact-value"><a href="https://instagram.com/sanrusangallery" target="_blank" rel="noopener">@sanrusangallery</a></p>
-        </div>
-      </div>
+      <p class="section-label">{{ home.contact_label }}</p>
+      <p class="contact-statement" data-split>{{ home.contact_statement }}</p>
+{% include "contact-grid.njk" %}
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-row mono">
-      <span>SANRUSAN &copy;2026 &mdash; All rights reserved</span>
-      <a href="/preview/about/">About</a>
-      <a href="mailto:contact@sanrusan.gallery">contact@sanrusan.gallery</a>
-    </div>
-    <div class="footer-mark">
-      <img class="footer-wordmark" src="/assets/logo-ink.png" alt="SANRUSAN" loading="lazy">
-    </div>
-  </footer>
-
-  <script src="/assets/vendor/lenis.min.js"></script>
-  <script src="/assets/motion.js"></script>
+{% include "footer.njk" %}
 </body>
 </html>

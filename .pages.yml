@@ -1,0 +1,466 @@
+# Pages CMS — the editing panel for sanrusan.gallery (app.pagescms.org)
+# Everything below describes the content of the site. Saving in the panel commits to
+# GitHub, and Vercel publishes the change in about half a minute.
+
+media:
+  input: assets
+  output: /assets
+
+content:
+  # ── Landing page ─────────────────────────────────────────────────────────────
+  - name: home
+    label: Landing page
+    type: file
+    path: src/_data/home.json
+    format: json
+    fields:
+      - name: intro
+        label: Opening paragraph
+        type: text
+        description: The short paragraph over the film, top left.
+      - name: title_lines
+        label: Headline
+        type: string
+        list: true
+        description: One entry per line of the big headline.
+      - name: film
+        label: Opening film
+        type: object
+        fields:
+          - name: tag
+            label: Small label above the film
+            type: string
+          - name: poster
+            label: Poster image
+            type: image
+            description: Shown while the film loads.
+          - name: src_desktop
+            label: Film — desktop
+            type: file
+          - name: src_mobile
+            label: Film — phones
+            type: file
+            description: A lighter version, used on small screens.
+          - name: alt
+            label: Film description
+            type: string
+            description: For screen readers and when video is blocked.
+          - name: caption_title
+            label: Caption when the film fills the screen
+            type: string
+          - name: caption_meta
+            label: Caption — right side
+            type: string
+      - name: meta_left
+        label: Bottom row — left
+        type: string
+      - name: meta_scroll
+        label: Bottom row — scroll hint
+        type: string
+      - name: meta_right
+        label: Bottom row — right
+        type: string
+      - name: marquee
+        label: Moving band of words
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.text}"
+        fields:
+          - name: text
+            label: Word
+            type: string
+          - name: outline
+            label: Outlined letters
+            type: boolean
+      - name: manifest_label
+        label: Manifest — section label
+        type: string
+      - name: manifest
+        label: Manifest text
+        type: text
+        description: Lights up word by word as the visitor scrolls.
+      - name: exhibition
+        label: Exhibition block
+        type: object
+        fields:
+          - name: label
+            label: Section label
+            type: string
+          - name: artist
+            label: Artist shown here
+            type: string
+            description: The artist's short name (slug), for example draga-aurel. Their logo, film and featured pieces are pulled in automatically.
+          - name: title_lines
+            label: Exhibition title
+            type: string
+            list: true
+          - name: text
+            label: Exhibition text
+            type: rich-text
+          - name: footnote
+            label: Line under the pieces
+            type: string
+          - name: cta
+            label: Link text
+            type: string
+      - name: contact_label
+        label: Contact — section label
+        type: string
+      - name: contact_statement
+        label: Contact — big line
+        type: string
+      - name: title
+        label: Browser tab title
+        type: string
+      - name: description
+        label: Description for search engines
+        type: text
+
+  # ── Artists ──────────────────────────────────────────────────────────────────
+  - name: artists
+    label: Artists
+    type: collection
+    path: src/artists
+    format: yaml-frontmatter
+    filename: "{fields.slug}.md"
+    view:
+      fields: [title, order]
+      primary: title
+      sort: [order, title]
+    fields:
+      - name: title
+        label: Name
+        type: string
+        required: true
+      - name: slug
+        label: Short name for the address
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+        description: Lowercase, words joined by hyphens. Becomes /preview/artists/<short-name>/.
+      - name: order
+        label: Order
+        type: number
+        description: Lower numbers come first on the Artists page.
+      - name: description
+        label: Description for search engines
+        type: text
+      - name: people_line
+        label: Line under the name
+        type: string
+      - name: logo
+        label: Artist logo
+        type: image
+      - name: facts
+        label: Facts (studio, founded, practice)
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.label}: {fields.value}"
+        fields:
+          - name: label
+            type: string
+          - name: value
+            type: string
+      - name: portrait
+        label: Portrait
+        type: image
+      - name: portrait_alt
+        label: Portrait description
+        type: string
+      - name: portrait_caption_left
+        label: Portrait caption — left
+        type: string
+      - name: portrait_caption_right
+        label: Portrait caption — right
+        type: string
+      - name: card_meta
+        label: Line on the Artists page card
+        type: string
+      - name: body
+        label: Biography
+        type: rich-text
+      - name: quote
+        label: Quote
+        type: string
+      - name: quote_caption
+        label: Quote — attribution
+        type: string
+      - name: film
+        label: Studio film
+        type: object
+        fields:
+          - name: src
+            label: Film
+            type: file
+          - name: poster
+            label: Poster image
+            type: image
+          - name: caption_left
+            label: Caption — left
+            type: string
+          - name: caption_right
+            label: Caption — right
+            type: string
+      - name: exhibition
+        label: Exhibition at SANRUSAN
+        type: object
+        fields:
+          - name: label
+            label: Section label
+            type: string
+          - name: title
+            label: Exhibition title
+            type: string
+          - name: text
+            label: Exhibition text
+            type: rich-text
+          - name: image
+            label: Image beside the text
+            type: image
+          - name: image_alt
+            label: Image description
+            type: string
+          - name: cta
+            label: Link text
+            type: string
+          - name: film
+            label: Exhibition film (also used on the landing page)
+            type: file
+          - name: film_poster
+            label: Exhibition film — poster
+            type: image
+          - name: film_caption_left
+            label: Film caption — left
+            type: string
+          - name: film_caption_right
+            label: Film caption — right
+            type: string
+      - name: objects_label
+        label: Objects — section label
+        type: string
+      - name: objects
+        label: Objects in the exhibition
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.name} — {fields.meta}"
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: meta
+            label: Type and dimensions
+            type: string
+            description: Shown on the artist page, for example "Coffee table — Ø 34 × H 50 cm".
+          - name: home_meta
+            label: Type and materials
+            type: string
+            description: Shown on the landing page, for example "Coffee table — Resin, bronze".
+          - name: description
+            label: Short description
+            type: text
+          - name: image
+            label: Photograph
+            type: image
+          - name: alt
+            label: Photograph description
+            type: string
+          - name: featured
+            label: Show on the landing page
+            type: boolean
+            description: The first three ticked pieces appear on the home page.
+      - name: record_label
+        label: Record — section label
+        type: string
+      - name: record
+        label: Record (collections, fairs, brands)
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.heading}"
+        fields:
+          - name: heading
+            label: Column heading
+            type: string
+          - name: items
+            label: Entries
+            type: object
+            list:
+              collapsible:
+                summary: "{fields.name} {fields.note}"
+            fields:
+              - name: name
+                label: Name
+                type: string
+              - name: note
+                label: Note on the right
+                type: string
+      - name: enquire_lead
+        label: Enquiry line
+        type: string
+      - name: enquire_dim
+        label: Enquiry line — grey part
+        type: string
+      - name: enquire_subject
+        label: Email subject
+        type: string
+      - name: credits
+        label: Image credits
+        type: text
+      - name: layout
+        type: string
+        hidden: true
+        default: layouts/artist.njk
+      - name: permalink
+        type: string
+        hidden: true
+        default: "/preview/artists/{{ slug }}/index.html"
+
+  # ── About page ───────────────────────────────────────────────────────────────
+  - name: about
+    label: About page
+    type: file
+    path: src/_data/about.json
+    format: json
+    fields:
+      - name: label
+        label: Section label
+        type: string
+      - name: statement_lead
+        label: Big line — dark part
+        type: string
+      - name: statement_dim
+        label: Big line — grey part
+        type: string
+      - name: columns
+        label: Two paragraphs
+        type: text
+        list: true
+      - name: founders_label
+        label: Founders — section label
+        type: string
+      - name: founders
+        label: Founders
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.name}"
+        fields:
+          - name: name
+            label: Name
+            type: string
+          - name: role
+            label: Role
+            type: string
+          - name: photo
+            label: Photograph
+            type: image
+          - name: bio
+            label: Biography
+            type: text
+      - name: contact_label
+        label: Contact — section label
+        type: string
+      - name: title
+        label: Browser tab title
+        type: string
+      - name: description
+        label: Description for search engines
+        type: text
+
+  # ── Artists page ─────────────────────────────────────────────────────────────
+  - name: artistsPage
+    label: Artists page
+    type: file
+    path: src/_data/artistsPage.json
+    format: json
+    fields:
+      - name: label
+        label: Section label
+        type: string
+      - name: heading_lines
+        label: Headline
+        type: string
+        list: true
+      - name: intro
+        label: Intro paragraph
+        type: text
+      - name: group_label
+        label: Group heading
+        type: string
+      - name: group_count
+        label: Group number
+        type: string
+      - name: soon_label
+        label: Placeholder card — label
+        type: string
+      - name: soon_name
+        label: Placeholder card — name
+        type: string
+      - name: title
+        label: Browser tab title
+        type: string
+      - name: description
+        label: Description for search engines
+        type: text
+
+  # ── Coming soon page ─────────────────────────────────────────────────────────
+  - name: comingSoon
+    label: Coming soon page
+    type: file
+    path: src/_data/comingSoon.json
+    format: json
+    fields:
+      - name: top_left
+        label: Top row — left
+        type: string
+      - name: top_right
+        label: Top row — right
+        type: string
+      - name: message
+        label: Message under the logo
+        type: string
+      - name: title
+        label: Browser tab title
+        type: string
+      - name: description
+        label: Description for search engines
+        type: text
+
+  # ── Gallery details used everywhere ──────────────────────────────────────────
+  - name: site
+    label: Gallery details
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - name: name
+        label: Gallery name
+        type: string
+      - name: email
+        label: Email
+        type: string
+      - name: instagram_handle
+        label: Instagram handle
+        type: string
+      - name: instagram_url
+        label: Instagram link
+        type: string
+      - name: address_line_1
+        label: Address — street
+        type: string
+      - name: address_line_2
+        label: Address — city
+        type: string
+      - name: address_full
+        label: Address — one line
+        type: string
+      - name: copyright
+        label: Footer line
+        type: string
+      - name: logo_ink
+        label: Logo
+        type: image
