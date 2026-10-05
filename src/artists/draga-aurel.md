@@ -40,10 +40,10 @@ exhibition:
     Draga & Aurel are the first artists to show at SANRUSAN, with a solo
     presentation of *Transparency Matters* in the gallery on Strada Zăgazului, Bucharest.
 
-    The selection brings together lighting, seating, tables and a room divider,
-    each piece made to order in the Como atelier and different in the way only poured
-    material can be. Some can be lived with, some can be walked around, all of them
-    change as the daylight moves across the room.
+    The selection brings together lighting, seating and tables, each piece made to
+    order in the Como atelier and different in the way only poured material can be.
+    Some can be lived with, some can be walked around, all of them change as the
+    daylight moves across the room.
 objects_label: Draga & Aurel’s Objects — In the exhibition
 objects:
   - name: Agatha
@@ -80,13 +80,6 @@ objects:
     description: A luminous column of layered resin that owes its glow to the Space Age. Epoxy resin, satin brass, LED.
     image: /assets/draga-aurel/joy.jpg
     alt: Joy wall lamp
-    featured: false
-  - name: Reverso
-    meta: Room divider — 29 × 12 × H 270–330 cm
-    home_meta: Room divider — Resin, brass
-    description: A double-faced veil of cast colour that turns on its axis in a brass frame. Epoxy resin, semi-gloss brass.
-    image: /assets/draga-aurel/reverso.jpg
-    alt: Reverso room divider
     featured: false
 record_label: Selected record
 record:
