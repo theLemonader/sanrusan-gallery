@@ -47,19 +47,19 @@ exhibition:
 objects_label: Draga & Aurel’s Objects — In the exhibition
 objects:
   - name: Agatha
-    meta: Coffee table — Ø 34 × H 50 cm
+    meta: Coffee table, big top — Ø 90 × H 39.5 cm
     home_meta: Coffee table — Resin, bronze
-    description: An irregular disc of poured colour held in a matte bronze frame. Epoxy resin, bronze.
-    image: /assets/draga-aurel/agatha.jpg
-    alt: Agatha coffee table in resin and bronze
+    description: An irregular disc of poured colour, deep and fluid, held in a matte bronze frame. Epoxy resin, bronze.
+    image: /assets/draga-aurel/agatha-big.jpg
+    alt: Agatha coffee table with a big resin top in a bronze frame
     featured: true
-  - name: Lava
-    meta: Coffee table — Ø 60 × H 37.5 cm
-    home_meta: Coffee table — Resin, concrete
-    description: A thick resin top on a concrete cone, its surface eroded with sea salt until it reads like travertine.
-    image: /assets/draga-aurel/lava.jpg
-    alt: Lava coffee tables in resin and concrete
-    featured: true
+  - name: Jade
+    meta: Coffee tables — Ø 50 × H 28 cm and Ø 50 × H 38 cm
+    home_meta: Coffee table — Resin, brass
+    description: Interchangeable tops of blended colour, emerald and tobacco, on cylinders of etched, veined brass. Epoxy resin, brass.
+    image: /assets/draga-aurel/jade-coffee.jpg
+    alt: Jade coffee tables with coloured resin tops on brass cylinders
+    featured: false
   - name: Jade
     meta: Stool — Ø 40 × H 46 cm
     home_meta: Stool — Resin, brass
@@ -70,17 +70,24 @@ objects:
   - name: Cala
     meta: Bench — 110 × 42.5 × H 40 cm
     home_meta: Bench — Resin, concrete, brass
-    description: Coarse concrete under deep layers of resin, after the shores and lakebed of Como. Steel base, burnished brass finish.
+    description: Coarse concrete under deep layers of resin, after the shores and lakebed of Como. Burnished brass base.
     image: /assets/draga-aurel/cala.jpg
     alt: Cala bench in resin and concrete
     featured: true
-  - name: Joy
-    meta: Wall lamp — 20 × 13 × H 160 cm
-    home_meta: Wall lamp — Resin, satin brass
-    description: A luminous column of layered resin that owes its glow to the Space Age. Epoxy resin, satin brass, LED.
-    image: /assets/draga-aurel/joy.jpg
-    alt: Joy wall lamp
+  - name: Rive
+    meta: Bench — 185 × 40 × H 45 cm
+    home_meta: Bench — Concrete, fabric
+    description: A massive bench in the language of megalithic architecture, its concrete treated with sea salt until corroded and smooth surfaces alternate. Sea-salt treated concrete and fabric.
+    image: /assets/draga-aurel/rive.jpg
+    alt: Rive bench in treated concrete
     featured: false
+  - name: Joy 800
+    meta: Wall lamps — 20 × 13 × H 80 cm
+    home_meta: Wall lamp — Resin, brass, LED
+    description: Luminous columns of layered resin, in soft green and pink, that owe their glow to the Space Age. Epoxy resin, brass, LED.
+    image: /assets/draga-aurel/joy.jpg
+    alt: Joy wall lamp, a luminous column of resin
+    featured: true
 record_label: Selected record
 record:
   - heading: Collections
