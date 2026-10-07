@@ -29,8 +29,8 @@ film:
 exhibition:
   label: At SANRUSAN — Exhibition 01
   title: Transparency Matters
-  image: /assets/draga-aurel/resin-detail.jpg
-  image_alt: Detail of layered blue resin poured over concrete
+  image: /assets/draga-aurel/installation-cluster.jpg
+  image_alt: Cala benches arranged in a circle under a vaulted hall, with Joy wall lamps and works by Aurel K. Basedow
   cta: Enquire about the collection
   film: /assets/draga-aurel/film-transparency-matters.mp4
   film_poster: /assets/draga-aurel/film-transparency-matters-poster.jpg
@@ -123,7 +123,7 @@ record:
 enquire_lead: Every piece is made to order in Como.
 enquire_dim: Ask us about sizes, colours and availability.
 enquire_subject: Draga & Aurel — Transparency Matters
-credits: "Images and films courtesy of Draga & Aurel. Portrait: Anne Timmer, creative direction Valerie van der Werff."
+credits: "Images and films courtesy of Draga & Aurel. Installation photograph: Riccardo Gasperoni. Portrait: Anne Timmer, creative direction Valerie van der Werff."
 ---
 
 Draga & Aurel is the studio of designer Draga Obradovic and artist Aurel K. Basedow,
