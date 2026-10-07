@@ -210,7 +210,7 @@ html.no-vt.is-leaving body { opacity: 0; }
   gap: clamp(2.2rem, 4vw, 3.5rem) clamp(1rem, 2.5vw, 2rem);
 }
 .object { display: block; }
-.object .frame { aspect-ratio: 4 / 5; }
+.object .frame { aspect-ratio: 1 / 1; }
 .object-title {
   margin-top: 1rem;
   font-size: 1.05rem;

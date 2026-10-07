@@ -51,42 +51,35 @@ objects:
     home_meta: Coffee table — Resin, bronze
     description: An irregular disc of poured colour, deep and fluid, held in a matte bronze frame. Epoxy resin, bronze.
     image: /assets/draga-aurel/agatha-big.jpg
-    alt: Agatha coffee table with a big resin top in a bronze frame
+    alt: Agatha coffee table with a large orange and lilac resin top on a bronze frame
     featured: true
   - name: Jade
-    meta: Coffee tables — Ø 50 × H 28 cm and Ø 50 × H 38 cm
-    home_meta: Coffee table — Resin, brass
-    description: Interchangeable tops of blended colour, emerald and tobacco, on cylinders of etched, veined brass. Epoxy resin, brass.
-    image: /assets/draga-aurel/jade-coffee.jpg
-    alt: Jade coffee tables with coloured resin tops on brass cylinders
-    featured: false
-  - name: Jade
-    meta: Stool — Ø 40 × H 46 cm
-    home_meta: Stool — Resin, brass
-    description: A seat of blended colour resting on a cylinder of etched, veined brass. Epoxy resin, brass.
+    meta: Coffee tables and stool — Ø 50 × H 28 and H 38 cm, Ø 40 × H 46 cm
+    home_meta: Coffee tables — Resin, brass
+    description: Tops of blended colour, emerald and tobacco among them, resting on cylinders of etched, veined brass. The resin tops are interchangeable. Epoxy resin, brass.
     image: /assets/draga-aurel/jade.jpg
-    alt: Jade stools
+    alt: Four Jade pieces, coloured resin tops on brass cylinders
     featured: false
   - name: Cala
     meta: Bench — 110 × 42.5 × H 40 cm
     home_meta: Bench — Resin, concrete, brass
-    description: Coarse concrete under deep layers of resin, after the shores and lakebed of Como. Burnished brass base.
+    description: Coarse concrete under deep layers of green resin, after the shores and lakebed of Como. Burnished brass base.
     image: /assets/draga-aurel/cala.jpg
-    alt: Cala bench in resin and concrete
+    alt: Cala benches arranged in a circle, green resin over concrete
     featured: true
   - name: Rive
     meta: Bench — 185 × 40 × H 45 cm
     home_meta: Bench — Concrete, fabric
     description: A massive bench in the language of megalithic architecture, its concrete treated with sea salt until corroded and smooth surfaces alternate. Sea-salt treated concrete and fabric.
     image: /assets/draga-aurel/rive.jpg
-    alt: Rive bench in treated concrete
+    alt: Rive bench in black treated concrete
     featured: false
   - name: Joy 800
     meta: Wall lamps — 20 × 13 × H 80 cm
     home_meta: Wall lamp — Resin, brass, LED
     description: Luminous columns of layered resin, in soft green and pink, that owe their glow to the Space Age. Epoxy resin, brass, LED.
     image: /assets/draga-aurel/joy.jpg
-    alt: Joy wall lamp, a luminous column of resin
+    alt: Joy wall lamp glowing green inside layered resin
     featured: true
 record_label: Selected record
 record:
@@ -123,7 +116,7 @@ record:
 enquire_lead: Every piece is made to order in Como.
 enquire_dim: Ask us about sizes, colours and availability.
 enquire_subject: Draga & Aurel — Transparency Matters
-credits: "Images and films courtesy of Draga & Aurel. Installation photograph: Riccardo Gasperoni. Portrait: Anne Timmer, creative direction Valerie van der Werff."
+credits: "Images and films courtesy of Draga & Aurel. Photographs: Federica Lissoni and Riccardo Gasperoni. Portrait: Anne Timmer, creative direction Valerie van der Werff."
 ---
 
 Draga & Aurel is the studio of designer Draga Obradovic and artist Aurel K. Basedow,
