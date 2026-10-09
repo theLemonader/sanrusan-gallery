@@ -6,6 +6,7 @@ order: 1
 title: Draga & Aurel
 description: "Draga & Aurel, the Como studio of Draga Obradovic and Aurel K. Basedow. Transparency Matters, solo exhibition at SANRUSAN, Bucharest."
 people_line: Draga Obradovic, designer — Aurel K. Basedow, artist
+shareImage: /assets/share-card-draga-aurel.jpg
 logo: /assets/draga-aurel/logo-ink.svg
 facts:
   - label: Studio

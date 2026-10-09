@@ -411,28 +411,6 @@ content:
         label: Two paragraphs
         type: text
         list: true
-      - name: founders_label
-        label: Founders — section label
-        type: string
-      - name: founders
-        label: Founders
-        type: object
-        list:
-          collapsible:
-            summary: "{fields.name}"
-        fields:
-          - name: name
-            label: Name
-            type: string
-          - name: role
-            label: Role
-            type: string
-          - name: photo
-            label: Photograph
-            type: image
-          - name: bio
-            label: Biography
-            type: text
       - name: contact_label
         label: Contact — section label
         type: string

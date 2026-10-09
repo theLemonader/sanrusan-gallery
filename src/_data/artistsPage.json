@@ -2,8 +2,11 @@
   "title": "Artists — SANRUSAN",
   "description": "The artists presented at SANRUSAN, the collectible design gallery in Bucharest.",
   "label": "Artists",
-  "heading_lines": ["Makers of", "functional art"],
-  "intro": "SANRUSAN works with a small number of studios at a time, and gives each of them the whole gallery. The artists below are shown in Bucharest in dedicated exhibitions, with their work available through the gallery.",
+  "heading_lines": [
+    "Makers of",
+    "functional art"
+  ],
+  "intro": "SANRUSAN gives the whole gallery to one studio at a time. The first is Draga & Aurel, of Como, with Transparency Matters.",
   "group_label": "Presented",
   "group_count": "01",
   "soon_label": "Exhibition 02",

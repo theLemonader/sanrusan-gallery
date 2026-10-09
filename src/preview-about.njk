@@ -25,25 +25,9 @@ eleventyExcludeFromCollections: true
     }
     .about-cols .body-text { max-width: 50ch; }
 
-    .founders-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: clamp(2rem, 5vw, 5rem);
-      max-width: 64rem;
-    }
-    .founder { display: grid; grid-template-columns: 38% minmax(0, 1fr); gap: 1.5rem; align-items: start; }
-    .founder .frame { aspect-ratio: 4 / 5; }
-    .founder .frame img { filter: grayscale(1) contrast(1.04); }
-    .founder-name { font-size: 1.15rem; font-weight: 600; line-height: 1.2; }
-    .founder .mono { margin: 0.4rem 0 1rem; }
-    .founder-bio { font-size: 0.86rem; line-height: 1.7; color: var(--ink-soft); }
 
     @media (max-width: 860px) {
-      .about-cols, .founders-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px) {
-      .founder { grid-template-columns: 1fr; }
-      .founder .frame { max-width: 60%; }
+      .about-cols { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -65,24 +49,6 @@ eleventyExcludeFromCollections: true
             {{ column }}
           </p>
         </div>
-{%- endfor %}
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:0">
-      <p class="section-label">{{ about.founders_label }}</p>
-      <div class="founders-grid">
-{%- for founder in about.founders %}
-        <article class="founder reveal{% if not loop.first %} d1{% endif %}">
-          <div class="frame" data-reveal="clip"><img src="{{ founder.photo }}" alt="{{ founder.name }}" loading="lazy"></div>
-          <div>
-            <h2 class="founder-name">{{ founder.name }}</h2>
-            <p class="mono">{{ founder.role }}</p>
-            <p class="founder-bio">
-              {{ founder.bio }}
-            </p>
-          </div>
-        </article>
 {%- endfor %}
       </div>
     </section>

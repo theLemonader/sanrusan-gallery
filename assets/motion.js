@@ -95,7 +95,7 @@
     const src = wide ? v.dataset.srcLg : v.dataset.srcSm;
     if (src && v.getAttribute('src') !== src) { v.src = src; v.load(); }
   });
-  const videos = [...document.querySelectorAll('video[autoplay]')];
+  const videos = [...document.querySelectorAll('video')];
   const tryPlay = (v) => { if (v.dataset.visible !== '0') v.play().catch(() => {}); };
   videos.forEach((v) => {
     v.addEventListener('canplay', () => tryPlay(v));

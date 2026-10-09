@@ -163,7 +163,7 @@ eleventyComputed:
     <!-- Film -->
     <figure class="film" style="padding: 0 var(--pad)">
       <div class="frame" data-reveal="clip">
-        <video autoplay muted loop playsinline preload="metadata" data-parallax="0.07" poster="{{ film.poster }}" src="{{ film.src }}"></video>
+        <video data-autoplay muted loop playsinline preload="none" data-parallax="0.07" poster="{{ film.poster }}" src="{{ film.src }}"></video>
       </div>
       <figcaption class="caption"><span>{{ film.caption_left }}</span><span>{{ film.caption_right }}</span></figcaption>
     </figure>
