@@ -8,6 +8,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ people: "people" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "favicon.ico": "favicon.ico" });
+  eleventyConfig.addPassthroughCopy({ "googlea41968495f846a3f.html": "googlea41968495f846a3f.html" });
 
   // Rich-text fields written in Markdown inside the data files.
   eleventyConfig.addFilter("md", (value) => (value ? md.render(String(value)) : ""));
