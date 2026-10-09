@@ -1,0 +1,207 @@
+---
+current: artists
+navContact: "#enquire"
+eleventyComputed:
+  pageTitle: "{{ title | safe }} — SANRUSAN"
+  pageDescription: "{{ summary | safe }}"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "head.njk" %}
+  <style>
+    .crumbs { margin-bottom: clamp(2rem, 5vh, 3rem); }
+    .crumbs a:hover { color: var(--ink); }
+
+    .piece {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+    .piece-gallery { display: grid; gap: clamp(0.6rem, 1.2vw, 1rem); }
+    .piece-gallery .frame { aspect-ratio: 1 / 1; }
+    .piece-gallery-rest { display: grid; grid-template-columns: repeat(3, 1fr); gap: inherit; }
+    .piece-gallery-rest .frame { aspect-ratio: 1 / 1; }
+
+    .piece-side { position: sticky; top: 6rem; }
+    .piece-title {
+      font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.04;
+    }
+    .piece-type { margin: 0.6rem 0 clamp(1.6rem, 4vh, 2.4rem); }
+    .piece-body { font-size: 0.95rem; line-height: 1.75; color: var(--ink-soft); }
+    .piece-body p + p { margin-top: 1em; }
+
+    .specs { margin: clamp(1.8rem, 4vh, 2.6rem) 0; border-top: 1px solid var(--line); }
+    .specs div {
+      display: grid;
+      grid-template-columns: 8.5rem minmax(0, 1fr);
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+    .specs dt { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); padding-top: 0.2rem; }
+
+    .enquire-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      width: 100%;
+      padding: 1.1rem 1.4rem;
+      background: var(--ink);
+      color: var(--ivory);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      transition: background 0.4s var(--ease-out), color 0.4s var(--ease-out);
+    }
+    .enquire-btn:hover { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+    .enquire-note { margin-top: 0.9rem; line-height: 1.8; }
+
+    /* ── Finishes ── */
+    .finishes { margin-top: clamp(4rem, 10vh, 7rem); }
+    .finish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+      gap: clamp(1rem, 2vw, 1.6rem);
+    }
+    .finish { text-align: left; }
+    .finish-swatch {
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--paper-deep);
+      position: relative;
+    }
+    .finish-swatch img { width: 100%; height: 100%; object-fit: cover; }
+    .finish.is-here .finish-swatch { box-shadow: 0 0 0 1px var(--paper), 0 0 0 3px var(--ink); }
+    .finish-name { margin-top: 0.6rem; font-size: 0.78rem; line-height: 1.35; }
+    .finish-code { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em; color: var(--grey); }
+    .finish-here {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-family: var(--mono);
+      font-size: 0.54rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+    .finishes-note { margin-top: clamp(1.6rem, 4vh, 2.4rem); max-width: 54ch; line-height: 1.8; }
+
+    .piece-foot {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-top: clamp(3rem, 7vh, 5rem);
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 860px) {
+      .piece { grid-template-columns: 1fr; }
+      .piece-side { position: static; }
+    }
+  </style>
+</head>
+<body>
+{% set artistEntry = collections.artists | findArtist(artist) %}
+  <div class="grain" aria-hidden="true"></div>
+
+{% include "header.njk" %}
+
+  <main>
+    <section class="section page-top">
+      <p class="crumbs mono reveal">
+        <a href="/preview/artists/">Artists</a> &nbsp;/&nbsp;
+        <a href="{{ artistEntry.url }}">{{ artistEntry.data.title }}</a> &nbsp;/&nbsp; {{ title }}
+      </p>
+
+      <div class="piece">
+        <div class="piece-gallery">
+          <div class="frame" data-reveal="clip">
+            <img src="{{ images[0].src }}" alt="{{ images[0].alt }}" fetchpriority="high">
+          </div>
+{% if images.length > 1 %}
+          <div class="piece-gallery-rest">
+{%- for image in images %}{% if not loop.first %}
+            <div class="frame" data-reveal="clip" style="--d:{{ loop.index0 * 100 }}ms">
+              <img src="{{ image.src }}" alt="{{ image.alt }}" loading="lazy">
+            </div>
+{%- endif %}{% endfor %}
+          </div>
+{% endif %}
+        </div>
+
+        <div class="piece-side">
+          <h1 class="piece-title" data-split data-delay="150">{{ title }}</h1>
+          <p class="piece-type mono reveal d1">{{ type }} &mdash; {{ artistEntry.data.title }}</p>
+
+          <div class="piece-body reveal d1">
+            {{ content | safe }}
+          </div>
+
+          <dl class="specs reveal d2">
+            <div><dt>Dimensions</dt><dd>{{ dimensions }}</dd></div>
+            <div><dt>Materials</dt><dd>{{ materials }}</dd></div>
+{% if finish %}            <div><dt>Finish</dt><dd>{{ finish }}</dd></div>
+{% endif %}{% if lead_time %}            <div><dt>Availability</dt><dd>{{ lead_time }}</dd></div>
+{% endif %}          </dl>
+
+          <a class="enquire-btn reveal d2" href="mailto:{{ site.email }}?subject={{ ('Enquiry — ' + title + ' — ' + artistEntry.data.title) | urlencode }}">
+            <span>Enquire about this piece</span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+          <p class="enquire-note mono reveal d3">
+            Prices on request. Tell us the finish you have in mind and we will come back with
+            availability and lead time.
+          </p>
+        </div>
+      </div>
+
+{% if show_finishes %}
+      <div class="finishes">
+        <p class="section-label">Finishes</p>
+{% if available_finishes %}
+        <div class="finish-grid" style="margin-bottom: clamp(2.5rem, 6vh, 4rem)">
+{%- for finish in available_finishes %}
+          <div class="finish is-here reveal" style="--d:{{ loop.index0 * 60 }}ms">
+            <div class="finish-swatch"><img src="{{ finish.image }}" alt="{{ finish.name }} resin" loading="lazy"></div>
+            <p class="finish-name">{{ finish.name }}</p>
+            <p class="finish-code">{{ finish.code }}</p>
+            <span class="finish-here">In the gallery</span>
+          </div>
+{%- endfor %}
+        </div>
+{% endif %}
+        <div class="finish-grid">
+{%- for finish in finishes.chart %}
+          <div class="finish reveal" style="--d:{{ loop.index0 * 25 }}ms">
+            <div class="finish-swatch"><img src="{{ finish.image }}" alt="{{ finish.name }} resin" loading="lazy"></div>
+            <p class="finish-name">{{ finish.name }}</p>
+            <p class="finish-code">{{ finish.code }}</p>
+          </div>
+{%- endfor %}
+        </div>
+        <p class="finishes-note mono">{{ finishes.note }}</p>
+      </div>
+{% endif %}
+
+      <div class="piece-foot reveal">
+        <p class="mono">At SANRUSAN &mdash; {{ site.address_full }}</p>
+        <a class="link-arrow" href="{{ artistEntry.url }}">All pieces by {{ artistEntry.data.title }} <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </section>
+  </main>
+
+{% include "footer.njk" %}
+</body>
+</html>

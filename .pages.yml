@@ -240,38 +240,6 @@ content:
       - name: objects_label
         label: Objects — section label
         type: string
-      - name: objects
-        label: Objects in the exhibition
-        type: object
-        list:
-          collapsible:
-            summary: "{fields.name} — {fields.meta}"
-        fields:
-          - name: name
-            label: Name
-            type: string
-            required: true
-          - name: meta
-            label: Type and dimensions
-            type: string
-            description: Shown on the artist page, for example "Coffee table — Ø 34 × H 50 cm".
-          - name: home_meta
-            label: Type and materials
-            type: string
-            description: Shown on the landing page, for example "Coffee table — Resin, bronze".
-          - name: description
-            label: Short description
-            type: text
-          - name: image
-            label: Photograph
-            type: image
-          - name: alt
-            label: Photograph description
-            type: string
-          - name: featured
-            label: Show on the landing page
-            type: boolean
-            description: The first three ticked pieces appear on the home page.
       - name: record_label
         label: Record — section label
         type: string
@@ -318,6 +286,110 @@ content:
         type: string
         hidden: true
         default: "/preview/artists/{{ slug }}/index.html"
+
+  # ── Objects ──────────────────────────────────────────────────────────────────
+  - name: objects
+    label: Objects
+    type: collection
+    path: src/objects
+    format: yaml-frontmatter
+    filename: "{fields.slug}.md"
+    view:
+      fields: [title, type, order]
+      primary: title
+      sort: [order, title]
+    fields:
+      - name: title
+        label: Name
+        type: string
+        required: true
+      - name: slug
+        label: Short name for the address
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+        description: Lowercase, words joined by hyphens. Becomes the end of the piece's address.
+      - name: artist
+        label: Artist
+        type: string
+        required: true
+        description: The artist's short name, for example draga-aurel.
+      - name: order
+        label: Order
+        type: number
+        description: Lower numbers come first on the artist's page.
+      - name: type
+        label: Kind of piece
+        type: string
+        description: For example "Coffee table" or "Wall lamp".
+      - name: dimensions
+        label: Dimensions
+        type: string
+      - name: materials
+        label: Materials
+        type: string
+      - name: finish
+        label: Finish
+        type: string
+      - name: lead_time
+        label: Availability
+        type: string
+        description: For example "Made to order in Como, from 11 weeks".
+      - name: card_meta
+        label: Line on the landing page card
+        type: string
+      - name: summary
+        label: Short description
+        type: text
+        description: Shown on the card on the artist's page.
+      - name: featured
+        label: Show on the landing page
+        type: boolean
+        description: The first three ticked pieces appear on the home page.
+      - name: images
+        label: Photographs
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.alt}"
+        fields:
+          - name: src
+            label: Photograph
+            type: image
+          - name: alt
+            label: Description
+            type: string
+      - name: show_finishes
+        label: Show the colour chart
+        type: boolean
+        description: Shows every resin reference that can be ordered.
+      - name: available_finishes
+        label: Colours in the gallery
+        type: object
+        list:
+          collapsible:
+            summary: "{fields.code} {fields.name}"
+        fields:
+          - name: code
+            label: Code
+            type: string
+          - name: name
+            label: Name
+            type: string
+          - name: image
+            label: Swatch
+            type: image
+      - name: body
+        label: Description
+        type: rich-text
+      - name: layout
+        type: string
+        hidden: true
+        default: layouts/object.njk
+      - name: permalink
+        type: string
+        hidden: true
+        default: "/preview/artists/{{ artist }}/{{ slug }}/index.html"
 
   # ── About page ───────────────────────────────────────────────────────────────
   - name: about

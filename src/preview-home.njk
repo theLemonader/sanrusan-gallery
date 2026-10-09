@@ -299,11 +299,11 @@ eleventyExcludeFromCollections: true
       <div class="objects expo-objects">
 {%- set delays = ["", "120ms", "240ms"] %}
 {%- set classes = ["", " d1", " d2"] %}
-{%- for object in artist.data.objects | featured(3) %}
-        <a class="object" href="{{ artist.url }}">
-          <div class="frame" data-reveal="clip"{% if delays[loop.index0] %} style="--d:{{ delays[loop.index0] }}"{% endif %}><img src="{{ object.image }}" alt="{{ object.alt }}" loading="lazy"></div>
-          <h3 class="object-title reveal{{ classes[loop.index0] }}">{{ object.name }}</h3>
-          <p class="object-meta mono reveal{{ classes[loop.index0] }}">{{ object.home_meta }}</p>
+{%- for piece in collections.objects | byArtist(home.exhibition.artist) | featuredObjects(3) %}
+        <a class="object" href="{{ piece.url }}">
+          <div class="frame" data-reveal="clip"{% if delays[loop.index0] %} style="--d:{{ delays[loop.index0] }}"{% endif %}><img src="{{ piece.data.images[0].src }}" alt="{{ piece.data.images[0].alt }}" loading="lazy"></div>
+          <h3 class="object-title reveal{{ classes[loop.index0] }}">{{ piece.data.title }}</h3>
+          <p class="object-meta mono reveal{{ classes[loop.index0] }}">{{ piece.data.card_meta }}</p>
         </a>
 {%- endfor %}
       </div>

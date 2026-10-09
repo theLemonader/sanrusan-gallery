@@ -193,14 +193,14 @@ eleventyComputed:
       <div class="objects">
 {%- set rowClasses = ["", " d1", " d2"] %}
 {%- set rowDelays = ["", "120ms", "240ms"] %}
-{%- for object in objects %}
+{%- for piece in collections.objects | byArtist(slug) %}
 {%- set slot = loop.index0 % 3 %}
-        <article class="object reveal{{ rowClasses[slot] }}">
-          <div class="frame" data-reveal="clip"{% if rowDelays[slot] %} style="--d:{{ rowDelays[slot] }}"{% endif %}><img src="{{ object.image }}" alt="{{ object.alt }}" loading="lazy"></div>
-          <h3 class="object-title">{{ object.name }}</h3>
-          <p class="object-meta mono">{{ object.meta }}</p>
-          <p class="object-desc">{{ object.description }}</p>
-        </article>
+        <a class="object reveal{{ rowClasses[slot] }}" href="{{ piece.url }}">
+          <div class="frame" data-reveal="clip"{% if rowDelays[slot] %} style="--d:{{ rowDelays[slot] }}"{% endif %}><img src="{{ piece.data.images[0].src }}" alt="{{ piece.data.images[0].alt }}" loading="lazy"></div>
+          <h3 class="object-title">{{ piece.data.title }}</h3>
+          <p class="object-meta mono">{{ piece.data.type }} &mdash; {{ piece.data.dimensions }}</p>
+          <p class="object-desc">{{ piece.data.summary }}</p>
+        </a>
 {%- endfor %}
       </div>
     </section>

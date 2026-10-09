@@ -18,6 +18,19 @@ export default function (eleventyConfig) {
     api.getFilteredByGlob("src/artists/*.md").sort((a, b) => (a.data.order || 99) - (b.data.order || 99))
   );
 
+  // Objects, one file per piece.
+  eleventyConfig.addCollection("objects", (api) =>
+    api.getFilteredByGlob("src/objects/*.md").sort((a, b) => (a.data.order || 99) - (b.data.order || 99))
+  );
+
+  eleventyConfig.addFilter("byArtist", (objects = [], slug) =>
+    objects.filter((entry) => entry.data.artist === slug)
+  );
+
+  eleventyConfig.addFilter("featuredObjects", (objects = [], limit = 3) =>
+    objects.filter((entry) => entry.data.featured).slice(0, limit)
+  );
+
   // The artist shown in the landing page's exhibition block.
   eleventyConfig.addFilter("findArtist", (artists = [], slug) =>
     artists.find((entry) => entry.data.slug === slug || entry.fileSlug === slug)

@@ -45,42 +45,6 @@ exhibition:
     Some can be lived with, some can be walked around, all of them change as the
     daylight moves across the room.
 objects_label: Draga & Aurel’s Objects — In the exhibition
-objects:
-  - name: Agatha
-    meta: Coffee table, big top — Ø 90 × H 39.5 cm
-    home_meta: Coffee table — Resin, bronze
-    description: An irregular disc of poured colour, deep and fluid, held in a matte bronze frame. Epoxy resin, bronze.
-    image: /assets/draga-aurel/agatha-big.jpg
-    alt: Agatha coffee table with a large orange and lilac resin top on a bronze frame
-    featured: true
-  - name: Jade
-    meta: Coffee tables and stool — Ø 50 × H 28 and H 38 cm, Ø 40 × H 46 cm
-    home_meta: Coffee tables — Resin, brass
-    description: Tops of blended colour, emerald and tobacco among them, resting on cylinders of etched, veined brass. The resin tops are interchangeable. Epoxy resin, brass.
-    image: /assets/draga-aurel/jade.jpg
-    alt: Four Jade pieces, coloured resin tops on brass cylinders
-    featured: false
-  - name: Cala
-    meta: Bench — 110 × 42.5 × H 40 cm
-    home_meta: Bench — Resin, concrete, brass
-    description: Coarse concrete under deep layers of green resin, after the shores and lakebed of Como. Burnished brass base.
-    image: /assets/draga-aurel/cala.jpg
-    alt: Cala benches arranged in a circle, green resin over concrete
-    featured: true
-  - name: Rive
-    meta: Bench — 185 × 40 × H 45 cm
-    home_meta: Bench — Concrete, fabric
-    description: A massive bench in the language of megalithic architecture, its concrete treated with sea salt until corroded and smooth surfaces alternate. Sea-salt treated concrete and fabric.
-    image: /assets/draga-aurel/rive.jpg
-    alt: Rive bench in black treated concrete
-    featured: false
-  - name: Joy 800
-    meta: Wall lamps — 20 × 13 × H 80 cm
-    home_meta: Wall lamp — Resin, brass, LED
-    description: Luminous columns of layered resin, in soft green and pink, that owe their glow to the Space Age. Epoxy resin, brass, LED.
-    image: /assets/draga-aurel/joy.jpg
-    alt: Joy wall lamp glowing green inside layered resin
-    featured: true
 record_label: Selected record
 record:
   - heading: Collections

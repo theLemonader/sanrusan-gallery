@@ -1,0 +1,95 @@
+{
+  "note": "Every piece is poured by hand in the Como atelier, so each one differs slightly from the chart.",
+  "chart": [
+    {
+      "code": "R01",
+      "name": "Ruby-Red",
+      "image": "/assets/draga-aurel/finishes/r01.jpg"
+    },
+    {
+      "code": "R03",
+      "name": "Red Clay",
+      "image": "/assets/draga-aurel/finishes/r03.jpg"
+    },
+    {
+      "code": "R04",
+      "name": "Red Orange",
+      "image": "/assets/draga-aurel/finishes/r04.jpg"
+    },
+    {
+      "code": "R06",
+      "name": "Autumn",
+      "image": "/assets/draga-aurel/finishes/r06.jpg"
+    },
+    {
+      "code": "R07",
+      "name": "Melon",
+      "image": "/assets/draga-aurel/finishes/r07.jpg"
+    },
+    {
+      "code": "R08",
+      "name": "Purple Sapphire",
+      "image": "/assets/draga-aurel/finishes/r08.jpg"
+    },
+    {
+      "code": "R09",
+      "name": "Fuchsia",
+      "image": "/assets/draga-aurel/finishes/r09.jpg"
+    },
+    {
+      "code": "R10",
+      "name": "Rose Violet",
+      "image": "/assets/draga-aurel/finishes/r10.jpg"
+    },
+    {
+      "code": "R11",
+      "name": "Grape",
+      "image": "/assets/draga-aurel/finishes/r11.jpg"
+    },
+    {
+      "code": "R12",
+      "name": "Blue Sapphire",
+      "image": "/assets/draga-aurel/finishes/r12.jpg"
+    },
+    {
+      "code": "R13",
+      "name": "Ocean Blue",
+      "image": "/assets/draga-aurel/finishes/r13.jpg"
+    },
+    {
+      "code": "R14",
+      "name": "Cobalt",
+      "image": "/assets/draga-aurel/finishes/r14.jpg"
+    },
+    {
+      "code": "R15",
+      "name": "Moonstone",
+      "image": "/assets/draga-aurel/finishes/r15.jpg"
+    },
+    {
+      "code": "R16",
+      "name": "Jade",
+      "image": "/assets/draga-aurel/finishes/r16.jpg"
+    },
+    {
+      "code": "R17",
+      "name": "Olive",
+      "image": "/assets/draga-aurel/finishes/r17.jpg"
+    },
+    {
+      "code": "R18",
+      "name": "Emerald",
+      "image": "/assets/draga-aurel/finishes/r18.jpg"
+    },
+    {
+      "code": "R19",
+      "name": "Kelp Forest",
+      "image": "/assets/draga-aurel/finishes/r19.jpg"
+    },
+    {
+      "code": "R20",
+      "name": "Tobacco",
+      "image": "/assets/draga-aurel/finishes/r20.jpg"
+    }
+  ]
+}
