@@ -10,8 +10,23 @@
       "permanent": true
     },
     {
+      "source": "/preview/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/preview/about",
-      "destination": "/about",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/preview/about/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/preview/artists/:path*/",
+      "destination": "/artists/:path*/",
       "permanent": true
     },
     {
@@ -20,14 +35,14 @@
       "permanent": true
     },
     {
-      "source": "/preview/:path*",
-      "destination": "/:path*",
+      "source": "/preview/:path*/",
+      "destination": "/:path*/",
       "permanent": true
     },
     {
-      "source": "/artists/draga-aurel/reverso",
-      "destination": "/artists/draga-aurel",
-      "permanent": false
+      "source": "/preview/:path*",
+      "destination": "/:path*",
+      "permanent": true
     }
   ]
 }
