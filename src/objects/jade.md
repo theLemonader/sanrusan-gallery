@@ -1,6 +1,6 @@
 ---
 layout: layouts/object.njk
-permalink: "/preview/artists/{{ artist }}/{{ slug }}/index.html"
+permalink: "/artists/{{ artist }}/{{ slug }}/index.html"
 slug: jade
 artist: draga-aurel
 order: 2

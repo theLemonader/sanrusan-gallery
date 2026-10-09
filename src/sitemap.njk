@@ -1,0 +1,17 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- set pages = ["/", "/about/", "/artists/"] %}
+{%- for url in pages %}
+  <url><loc>{{ site.url }}{{ url }}</loc></url>
+{%- endfor %}
+{%- for entry in collections.artists %}
+  <url><loc>{{ site.url }}{{ entry.url }}</loc></url>
+{%- endfor %}
+{%- for piece in collections.objects %}
+  <url><loc>{{ site.url }}{{ piece.url }}</loc></url>
+{%- endfor %}
+</urlset>

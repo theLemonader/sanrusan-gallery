@@ -138,7 +138,7 @@ content:
         type: string
         required: true
         pattern: "^[a-z0-9-]+$"
-        description: Lowercase, words joined by hyphens. Becomes /preview/artists/<short-name>/.
+        description: Lowercase, words joined by hyphens. Becomes /artists/<short-name>/.
       - name: order
         label: Order
         type: number
@@ -285,7 +285,7 @@ content:
       - name: permalink
         type: string
         hidden: true
-        default: "/preview/artists/{{ slug }}/index.html"
+        default: "/artists/{{ slug }}/index.html"
 
   # ── Objects ──────────────────────────────────────────────────────────────────
   - name: objects
@@ -389,7 +389,7 @@ content:
       - name: permalink
         type: string
         hidden: true
-        default: "/preview/artists/{{ artist }}/{{ slug }}/index.html"
+        default: "/artists/{{ artist }}/{{ slug }}/index.html"
 
   # ── About page ───────────────────────────────────────────────────────────────
   - name: about

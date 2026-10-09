@@ -2,5 +2,32 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build",
   "outputDirectory": "_site",
-  "framework": null
+  "framework": null,
+  "redirects": [
+    {
+      "source": "/preview",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/preview/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/preview/artists/:path*",
+      "destination": "/artists/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/preview/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/artists/draga-aurel/reverso",
+      "destination": "/artists/draga-aurel",
+      "permanent": false
+    }
+  ]
 }

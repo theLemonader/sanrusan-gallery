@@ -1,3 +1,5 @@
 User-agent: *
-Disallow: /preview/
-Disallow: /artists
+Allow: /
+Disallow: /coming-soon
+
+Sitemap: https://sanrusan.gallery/sitemap.xml

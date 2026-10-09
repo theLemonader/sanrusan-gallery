@@ -3,11 +3,11 @@ import markdownIt from "markdown-it";
 const md = markdownIt({ html: true, typographer: false });
 
 export default function (eleventyConfig) {
-  // Files that are not generated: media, fonts, scripts, the outreach pages, the CMS panel.
+  // Files that are not generated: media, fonts and scripts.
   eleventyConfig.addPassthroughCopy({ assets: "assets" });
   eleventyConfig.addPassthroughCopy({ people: "people" });
-  eleventyConfig.addPassthroughCopy({ artists: "artists" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "favicon.ico": "favicon.ico" });
 
   // Rich-text fields written in Markdown inside the data files.
   eleventyConfig.addFilter("md", (value) => (value ? md.render(String(value)) : ""));

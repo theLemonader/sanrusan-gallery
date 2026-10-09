@@ -1,6 +1,6 @@
 ---
 layout: layouts/artist.njk
-permalink: "/preview/artists/{{ slug }}/index.html"
+permalink: "/artists/{{ slug }}/index.html"
 slug: draga-aurel
 order: 1
 title: Draga & Aurel

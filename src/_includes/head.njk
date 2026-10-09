@@ -1,7 +1,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>{{ pageTitle }}</title>
+{% if noindex %}  <meta name="robots" content="noindex, nofollow">
+{% endif %}  <title>{{ pageTitle }}</title>
 {% if pageDescription %}  <meta name="description" content="{{ pageDescription }}">
 {% endif %}  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('js')},3000);</script>
   <link rel="icon" href="/favicon.ico" sizes="32x32">
