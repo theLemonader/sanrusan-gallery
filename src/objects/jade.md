@@ -12,7 +12,7 @@ finish: Emerald (R18) and tobacco (R20) tops; stool in a custom jade (R16)
 lead_time: Made to order in Como, from 11 weeks
 card_meta: Coffee tables — Resin, brass
 summary: Tops of blended colour on cylinders of etched, veined brass. The resin tops are interchangeable.
-featured: false
+featured: true
 images:
   - src: /assets/draga-aurel/pieces/jade-1.jpg
     alt: Four Jade pieces together, coloured resin tops on brass cylinders

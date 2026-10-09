@@ -298,7 +298,7 @@ eleventyExcludeFromCollections: true
       <div class="objects expo-objects">
 {%- set delays = ["", "120ms", "240ms"] %}
 {%- set classes = ["", " d1", " d2"] %}
-{%- for piece in collections.objects | byArtist(home.exhibition.artist) | featuredObjects(3) %}
+{%- for piece in collections.objects | byArtist(home.exhibition.artist) | featuredObjects(8) %}
         <a class="object" href="{{ piece.url }}">
           <div class="frame" data-reveal="clip"{% if delays[loop.index0] %} style="--d:{{ delays[loop.index0] }}"{% endif %}><img src="{{ piece.data.images[0].src }}" alt="{{ piece.data.images[0].alt }}" loading="lazy"></div>
           <h3 class="object-title reveal{{ classes[loop.index0] }}">{{ piece.data.title }}</h3>

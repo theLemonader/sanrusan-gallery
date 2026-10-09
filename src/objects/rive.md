@@ -12,7 +12,7 @@ finish: Black concrete, surface treated with sea salt
 lead_time: Made to order in Como, from 11 weeks
 card_meta: Bench — Concrete, fabric
 summary: A massive bench in the language of megalithic architecture, its concrete corroded by sea salt.
-featured: false
+featured: true
 images:
   - src: /assets/draga-aurel/pieces/rive-1.jpg
     alt: Rive bench in black treated concrete
